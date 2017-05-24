@@ -1,11 +1,11 @@
      /* Added for DATE PICKER */
-
+     
      .full button span {
          background-color: limegreen;
          border-radius: 32px;
          color: black;
      }
-
+     
      .partially button span {
          background-color: orange;
          border-radius: 32px;
@@ -14,7 +14,7 @@
      /* 
 * Expense Creation form fields
 */
-
+     
      .exp_format {
          display: inline-block;
          margin-left: 10px;
@@ -22,7 +22,7 @@
          width: 65%;
          float: left;
      }
-
+     
      .exp_format1 {
          display: inline-block;
          margin-left: 10px;
@@ -31,14 +31,14 @@
          width: 75%;
          float: left;
      }
-
+     
      .exp_format2 {
          display: inline-block;
          max-width: 120px;
          width: 66%;
          float: left;
      }
-
+     
      .exp_num {
          display: inline-block;
          margin-left: 10px;
@@ -46,104 +46,104 @@
          width: 63%;
          float: left;
      }
-
+     
      .table_head {
          background: #2980b9;
          font-size: 14px !important;
      }
-
+     
      .table_head {
          background: #fafafa;
          font-size: 14px;
      }
-
+     
      .color-green {
          color: green;
          font-size: 16px;
      }
-
+     
      .color-blue {
          color: blue;
      }
-
+     
      .color-red {
          color: red;
          font-size: 16px;
      }
-
+     
      .color-orange {
          color: orange;
          font-size: 16px;
      }
-
+     
      .hoverme:hover {
          background-color: yellow;
      }
-
+     
      .clicked {
          background-color: green;
      }
-
+     
      .format_button_sm {
          width: 25%;
          margin: 10px;
      }
-
+     
      .format_button_small {
          width: 20%;
          margin: 10px;
      }
-
+     
      .format_button_med {
          width: 40%;
          margin: 10px;
          font-size: 16px;
      }
-
+     
      .format_button_mm {
          width: 90%;
          margin: 10px;
      }
-
+     
      .format_button_orig {
          width: 100%;
          margin: 10px;
      }
-
+     
      .panel-body-exp {
          padding: 15px;
      }
-
+     
      .expense_pad {
          padding-left: 10px;
          padding-top: 6px;
      }
-
+     
      .expense_pad1 {
          padding-left: 30px;
          padding-top: 10px;
          padding-bottom: 10px;
      }
-
+     
      .expense_currency {
          text-align: right;
          padding-right: 10px;
      }
-
+     
      input.currency {
          text-align: right;
          padding-right: 15px;
      }
-
+     
      .input-group .form-control {
          float: none;
      }
-
+     
      .input-group .input-buttons {
          position: relative;
          z-index: 3;
      }
-
+     
      .pastdue {
          background-color: red !important;
      }
@@ -154,23 +154,23 @@
      input.expenseInput:valid {
          border: 2px solid green;
      }*/
-
+     
      .field-feedback {
          color: #a94442;
          font-weight: bold;
      }
-
+     
      .file-browser {
          visibility: hidden;
      }
      /* 
  To remove the “No file chosen” tooltip from a file input
  */
-
+     
      .input[type='file'] {
          color: transparent;
      }
-
+     
      .radiofieldgroup {
          float: left;
          width: auto;
@@ -179,7 +179,7 @@
          padding-top: 5px;
          padding-bottom: 5px;
      }
-
+     
      .checkboxgroup {
          float: left;
          width: auto;
@@ -188,29 +188,29 @@
          padding-top: 5px;
          padding-bottom: 5px;
      }
-
+     
      .imagedisplay {
          padding: 20px;
          width: 300px;
          height: 200px;
      }
-
+     
      .labeldisplay {
          padding-top: 6px;
          padding-bottom: 6px;
          padding-left: 25px;
      }
-
+     
      .btnalign {}
-
+     
      .btnalignmore {
          padding-left: 60px;
      }
-
+     
      .divhide {
          display: none;
      }
-
+     
      .btninfo {
          font-size: 16px;
          font-weight: bold;
@@ -220,7 +220,7 @@
          padding-left: 5px;
          padding-top: 6px;
      }
-
+     
      .inputtextpad {
          padding-bottom: 6px;
          padding-top: 6px;
@@ -228,7 +228,7 @@
      /* #OtherExpensebtn {
      visibility: hidden;
  }*/
-
+     
      .canvas {
          background-color: #f3f3f3;
          -webkit-box-shadow: 3px 3px 3px 0 #e3e3e3;
@@ -238,21 +238,21 @@
          height: 100px;
          margin: 6px 0 0 6px;
      }
-
+     
      td.highlight {
          font-weight: bold;
          color: red;
      }
-
+     
      .swaltdl {
          float: left;
      }
-
+     
      .swaltdr {
          float: right;
          padding-right: 10px;
      }
-
+     
      .blinkinfo {
          -webkit-animation: glowing 1500ms infinite;
          -moz-animation: glowing 1500ms infinite;
@@ -274,7 +274,7 @@
          text-align: center;
          text-decoration: none;
      }
-
+     
      @-webkit-keyframes glowing {
          0% {
              background-color: #b21a00;
@@ -289,7 +289,7 @@
              -webkit-box-shadow: 0 0 3px #b21a00;
          }
      }
-
+     
      @-moz-keyframes glowing {
          0% {
              background-color: #b21a00;
@@ -304,7 +304,7 @@
              -moz-box-shadow: 0 0 3px #b21a00;
          }
      }
-
+     
      @-o-keyframes glowing {
          0% {
              background-color: #b21a00;
@@ -319,7 +319,7 @@
              box-shadow: 0 0 3px #b21a00;
          }
      }
-
+     
      @keyframes glowing {
          0% {
              background-color: #b21a00;
@@ -336,60 +336,60 @@
      }
      /*Red -- #B20000
 */
-
+     
      .popoverdash {
          position: absolute;
          z-index: 100;
      }
-
+     
      @media (min-width: 400px) {
          .modal-dash {
              width: 400px;
              height: 400px;
          }
      }
-
+     
      form.tab-form-demo .tab-pane {
          margin: 20px 20px;
          height: 600px;
          width: 600px;
      }
-
+     
      .fixed-panel {
          height: auto;
          width: auto;
          overflow-y: hidden;
      }
-
+     
      .scroll-panel {
          max-height: 100;
          /*height: auto;*/
          /*width: 800px;*/
          overflow-y: scroll;
      }
-
+     
      .chapter-panel {
          width: auto;
      }
-
+     
      .swalgreen {
          color: green;
          font-size: 16px;
          text-align: left;
          font-weight: bolder;
      }
-
+     
      .swalred {
          color: red;
          font-size: 16px;
          text-align: left;
          font-weight: bolder;
      }
-
+     
      .tblcontainer {
          width: 80%;
      }
-
+     
      .textboxsize {
          width: 80px;
          height: 33px;
@@ -397,11 +397,11 @@
          border-radius: 4px;
          text-align: center;
      }
-
+     
      .redwarning {
          color: red;
      }
-
+     
      .rederror {
          color: red;
          font-weight: bolder;
@@ -409,19 +409,19 @@
          background-color: yellow;
      }
      /* begin kevin css for expenses*/
-
+     
      .load-image-group {
          margin-top: 15px;
          margin-bottom: 15px;
      }
      /* bootstrap row override */
-
+     
      .row {
          margin-left: 0;
          margin-right: 0;
      }
      /* new expense page panel heading background */
-
+     
      .expense-panel-heading {
          background: #aec6cf;
      }

@@ -78,6 +78,7 @@ module.exports = function(config) {
             'bower_components/angular-xeditable/dist/js/xeditable.js',
             'bower_components/chart.js/dist/Chart.js',
             'bower_components/angular-chart.js/dist/angular-chart.js',
+            'bower_components/signature_pad/signature_pad.js',
             'bower_components/angular-ui-utils/ui-utils.js',
             'bower_components/angular-ui-map/ui-map.js',
             'bower_components/angular-mocks/angular-mocks.js',
