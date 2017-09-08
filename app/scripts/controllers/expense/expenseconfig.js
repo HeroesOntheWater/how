@@ -294,38 +294,40 @@ angular
           $scope.EVTable.destroy();
         }
         // var selected = [];
-        $scope.EVTable = $('#ConfigStatusTable').removeAttr('width').DataTable({
-          responsive: true,
-          autoWidth: false,
-          data: $scope.ConfigLog, // tabledata,
-          scrollY: '200px',
-          scrollCollapse: true,
-          paging: false,
+        $scope.EVTable = $('#ConfigStatusTable')
+          .removeAttr('width')
+          .DataTable({
+            responsive: true,
+            autoWidth: false,
+            data: $scope.ConfigLog, // tabledata,
+            scrollY: '200px',
+            scrollCollapse: true,
+            paging: false,
 
-          columns: [
-            {
-              data: 'StatusDate',
-              title: 'Status Date',
-              width: '70px',
-            },
-            {
-              data: 'StatusBy',
-              title: 'Status By',
-              width: '90px',
-            },
-          ],
-          columnDefs: [
-            {
-              targets: 0,
-              width: '25%',
-            },
-            {
-              targets: 1,
-              width: '35%',
-            },
-          ],
-          order: [[0, 'desc']],
-        });
+            columns: [
+              {
+                data: 'StatusDate',
+                title: 'Status Date',
+                width: '70px',
+              },
+              {
+                data: 'StatusBy',
+                title: 'Status By',
+                width: '90px',
+              },
+            ],
+            columnDefs: [
+              {
+                targets: 0,
+                width: '25%',
+              },
+              {
+                targets: 1,
+                width: '35%',
+              },
+            ],
+            order: [[0, 'desc']],
+          });
       });
     };
   });

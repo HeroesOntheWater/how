@@ -387,7 +387,12 @@
             try {
               throw new Error();
             } catch (e) {
-              return e.stack ? e.stack.split('\n').slice(2).join('\n') : '';
+              return e.stack
+                ? e.stack
+                    .split('\n')
+                    .slice(2)
+                    .join('\n')
+                : '';
             }
           }
 
@@ -652,7 +657,7 @@
           }
 
           function readInt8(data, start) {
-            return data[start] << 24 >> 24;
+            return (data[start] << 24) >> 24;
           }
 
           function readUint16(data, offset) {

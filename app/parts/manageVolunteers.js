@@ -192,7 +192,9 @@ angular
 
             // If row ID is in the list of selected row IDs
             if ($.inArray(rowId, $scope.rows_selected) !== -1) {
-              $(row).find('input[type="checkbox"]').prop('checked', true);
+              $(row)
+                .find('input[type="checkbox"]')
+                .prop('checked', true);
               $(row).addClass('selected');
             }
           },

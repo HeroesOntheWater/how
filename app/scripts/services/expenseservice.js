@@ -205,7 +205,10 @@ angular
           PaymentLog: paymentstatuslog,
         };
 
-        firebase.database().ref('expense/' + billkey).update(ePaymentLog);
+        firebase
+          .database()
+          .ref('expense/' + billkey)
+          .update(ePaymentLog);
       }
       swal('Payment Status Updated Successfully!', '', 'success');
     };
@@ -230,7 +233,7 @@ angular
             .database()
             .ref('/expense')
             .orderByChild('Chapter')
-            .equalTo(Chapter);
+            .equalTo(Chapter.key);
           break;
         default:
           var ref = firebase
@@ -508,18 +511,21 @@ angular
 
             var filelocname = 'images/' + UniqueBillId + '_' + file.name;
 
-            storageRef.child(filelocname).put(file).then(function(snapshot) {
-              if (snapshot !== undefined) {
-                return storageRef
-                  .child(filelocname)
-                  .getDownloadURL()
-                  .then(function(url) {
-                    console.log('Image func - ', url);
-                    return url;
-                  });
-                // console.log('Uploaded a blob or file!');
-              }
-            });
+            storageRef
+              .child(filelocname)
+              .put(file)
+              .then(function(snapshot) {
+                if (snapshot !== undefined) {
+                  return storageRef
+                    .child(filelocname)
+                    .getDownloadURL()
+                    .then(function(url) {
+                      console.log('Image func - ', url);
+                      return url;
+                    });
+                  // console.log('Uploaded a blob or file!');
+                }
+              });
             var storageRef = firebase.storage().ref(filelocname);
             var uploadTask = storageRef.put(file);
             uploadTask.on('state_changed', null, null, function() {

@@ -127,7 +127,9 @@ angular
               render: function(data) {
                 return (
                   '<input type="checkbox" id="eventVolunteersTable-select" value="' +
-                  $('<div/>').text(data).html() +
+                  $('<div/>')
+                    .text(data)
+                    .html() +
                   '">'
                 );
               },

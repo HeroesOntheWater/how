@@ -34,11 +34,14 @@ angular.module('ohanaApp').service('commonServices', [
             .set(user)
             .then(function(data) {
               console.log('success : user data added');
-              firebase.database().ref('/userRoles/' + userId).set({
-                role: 'Participant',
-                name: user.name,
-                email: user.email,
-              });
+              firebase
+                .database()
+                .ref('/userRoles/' + userId)
+                .set({
+                  role: 'Participant',
+                  name: user.name,
+                  email: user.email,
+                });
               return true;
             })
             .catch(function(error) {
@@ -191,7 +194,10 @@ angular.module('ohanaApp').service('commonServices', [
 
     // Adds a key to the designated path, then returns the key.
     this.getNewKey = function(path) {
-      return firebase.database().ref(path).push().key;
+      return firebase
+        .database()
+        .ref(path)
+        .push().key;
     };
 
     // Updates data at given path.

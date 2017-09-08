@@ -129,14 +129,38 @@ angular
               .html('<input type="checkbox" id="chaptersTable-select-all">');
           },
           rowCallback: function(row, data, index) {
-            $(row).find('input[type="checkbox"]').eq(0).attr('value', data.key);
-            $(row).children().eq(1).addClass('tdCName');
-            $(row).children().eq(2).addClass('tdDescription');
-            $(row).children().eq(3).addClass('tdChapterAdmin');
-            $(row).children().eq(4).addClass('tdSelectRegion');
-            $(row).children().eq(5).addClass('tdSelectState');
-            $(row).children().eq(6).addClass('tdSelectZip');
-            $(row).children().eq(7).addClass('tdEmail'); // email checking disabled
+            $(row)
+              .find('input[type="checkbox"]')
+              .eq(0)
+              .attr('value', data.key);
+            $(row)
+              .children()
+              .eq(1)
+              .addClass('tdCName');
+            $(row)
+              .children()
+              .eq(2)
+              .addClass('tdDescription');
+            $(row)
+              .children()
+              .eq(3)
+              .addClass('tdChapterAdmin');
+            $(row)
+              .children()
+              .eq(4)
+              .addClass('tdSelectRegion');
+            $(row)
+              .children()
+              .eq(5)
+              .addClass('tdSelectState');
+            $(row)
+              .children()
+              .eq(6)
+              .addClass('tdSelectZip');
+            $(row)
+              .children()
+              .eq(7)
+              .addClass('tdEmail'); // email checking disabled
             for (i = 2; i < 7; i++) {
               if (i != 4 && i != 5 && i != 6) {
                 $(row)
@@ -153,9 +177,15 @@ angular
             // set currentId to user being edited
             $('#chaptersTable').off('click', 'tr');
             $('#chaptersTable').on('click', 'tr', function() {
-              $scope.currId = $(this).find('input[type="checkbox"]').val();
+              $scope.currId = $(this)
+                .find('input[type="checkbox"]')
+                .val();
               $scope.editValue = $(this)[0].cells;
-              if ($(this).find('input[type="checkbox"]').is(':checked')) {
+              if (
+                $(this)
+                  .find('input[type="checkbox"]')
+                  .is(':checked')
+              ) {
                 $scope.checkedBoxes.push($scope.currId);
               } else {
                 for (var i = 0; i < $scope.checkedBoxes.length; i++) {
@@ -184,11 +214,15 @@ angular
                   '/' +
                   $scope.editValue[5].textContent +
                   '/' +
-                  $($scope.editValue).find('#chaptersTable-select').val() +
+                  $($scope.editValue)
+                    .find('#chaptersTable-select')
+                    .val() +
                   '/name';
                 var path2 =
                   '/siteData/chapters/' +
-                  $($scope.editValue).find('#chaptersTable-select').val();
+                  $($scope.editValue)
+                    .find('#chaptersTable-select')
+                    .val();
                 commonServices.updateData(path, packet);
                 commonServices.updateData(path2, packet2);
               },
@@ -206,7 +240,9 @@ angular
                   '/' +
                   $scope.editValue[5].textContent +
                   '/' +
-                  $($scope.editValue).find('#chaptersTable-select').val() +
+                  $($scope.editValue)
+                    .find('#chaptersTable-select')
+                    .val() +
                   '/description';
                 commonServices.updateData(path, packet);
               },
@@ -224,7 +260,9 @@ angular
                   '/' +
                   $scope.editValue[5].textContent +
                   '/' +
-                  $($scope.editValue).find('#chaptersTable-select').val() +
+                  $($scope.editValue)
+                    .find('#chaptersTable-select')
+                    .val() +
                   '/lead';
                 commonServices.updateData(path, packet);
               },
@@ -242,7 +280,9 @@ angular
                   '/' +
                   $scope.editValue[5].textContent +
                   '/' +
-                  $($scope.editValue).find('#chaptersTable-select').val() +
+                  $($scope.editValue)
+                    .find('#chaptersTable-select')
+                    .val() +
                   '/zip';
                 commonServices.updateData(path, packet);
               },
@@ -260,7 +300,9 @@ angular
                   '/' +
                   $scope.editValue[5].textContent +
                   '/' +
-                  $($scope.editValue).find('#chaptersTable-select').val() +
+                  $($scope.editValue)
+                    .find('#chaptersTable-select')
+                    .val() +
                   '/email';
                 commonServices.updateData(path, packet);
               },

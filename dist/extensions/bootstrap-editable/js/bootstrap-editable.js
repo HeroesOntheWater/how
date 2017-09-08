@@ -190,18 +190,26 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
 
       if (msg === false) {
         $group.removeClass($.fn.editableform.errorGroupClass);
-        $block.removeClass($.fn.editableform.errorBlockClass).empty().hide();
+        $block
+          .removeClass($.fn.editableform.errorBlockClass)
+          .empty()
+          .hide();
       } else {
         //convert newline to <br> for more pretty error display
         if (msg) {
           lines = ('' + msg).split('\n');
           for (var i = 0; i < lines.length; i++) {
-            lines[i] = $('<div>').text(lines[i]).html();
+            lines[i] = $('<div>')
+              .text(lines[i])
+              .html();
           }
           msg = lines.join('<br>');
         }
         $group.addClass($.fn.editableform.errorGroupClass);
-        $block.addClass($.fn.editableform.errorBlockClass).html(msg).show();
+        $block
+          .addClass($.fn.editableform.errorBlockClass)
+          .html(msg)
+          .show();
       }
     },
 
@@ -833,7 +841,9 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
              method to escape html.
             **/
     escape: function(str) {
-      return $('<div>').text(str).html();
+      return $('<div>')
+        .text(str)
+        .html();
     },
 
     /*
@@ -1207,7 +1217,9 @@ Applied as jQuery method.
         //for inline container
         this.tip().append(this.$form);
       } else {
-        this.tip().find(this.innerCss).append(this.$form);
+        this.tip()
+          .find(this.innerCss)
+          .append(this.$form);
       }
 
       //render form
@@ -1373,7 +1385,11 @@ Applied as jQuery method.
         if (ec.options.onblur === 'cancel') {
           $el.data('editableContainer').hide('onblur');
         } else if (ec.options.onblur === 'submit') {
-          $el.data('editableContainer').tip().find('form').submit();
+          $el
+            .data('editableContainer')
+            .tip()
+            .find('form')
+            .submit();
         }
       });
     },
@@ -1536,7 +1552,9 @@ Applied as jQuery method.
 
       innerShow: function() {
         this.$element.hide();
-        this.tip().insertAfter(this.$element).show();
+        this.tip()
+          .insertAfter(this.$element)
+          .show();
       },
 
       innerHide: function() {
@@ -1551,7 +1569,9 @@ Applied as jQuery method.
 
       innerDestroy: function() {
         if (this.tip()) {
-          this.tip().empty().remove();
+          this.tip()
+            .empty()
+            .remove();
         }
       },
     }
@@ -2536,7 +2556,9 @@ To create your own input you can inherit from this class.
              @returns {mixed}
             **/
     html2value: function(html) {
-      return $('<div>').html(html).text();
+      return $('<div>')
+        .html(html)
+        .text();
     },
 
     /**
@@ -2615,7 +2637,9 @@ To create your own input you can inherit from this class.
              method to escape html.
             **/
     escape: function(str) {
-      return $('<div>').text(str).html();
+      return $('<div>')
+        .text(str)
+        .html();
     },
 
     /**
@@ -3236,7 +3260,9 @@ $(function(){
       //ctrl + enter
       this.$input.keydown(function(e) {
         if (e.ctrlKey && e.which === 13) {
-          $(this).closest('form').submit();
+          $(this)
+            .closest('form')
+            .submit();
         }
       });
     },
@@ -3372,7 +3398,9 @@ $(function(){
       //enter submit
       this.$input.on('keydown.editable', function(e) {
         if (e.which === 13) {
-          $(this).closest('form').submit();
+          $(this)
+            .closest('form')
+            .submit();
         }
       });
     },
@@ -3395,7 +3423,9 @@ $(function(){
 
     autosubmit: function() {
       this.$input.off('keydown.editable').on('change.editable', function() {
-        $(this).closest('form').submit();
+        $(this)
+          .closest('form')
+          .submit();
       });
     },
   });
@@ -3462,7 +3492,9 @@ $(function(){
           )
           .append($('<span>').text(' ' + this.sourceData[i].text));
 
-        $('<div>').append($label).appendTo(this.$tpl);
+        $('<div>')
+          .append($label)
+          .appendTo(this.$tpl);
       }
 
       this.$input = this.$tpl.find('input[type="checkbox"]');
@@ -3540,7 +3572,9 @@ $(function(){
     autosubmit: function() {
       this.$input.on('keydown', function(e) {
         if (e.which === 13) {
-          $(this).closest('form').submit();
+          $(this)
+            .closest('form')
+            .submit();
         }
       });
     },
@@ -3753,7 +3787,9 @@ Range (inherit from number)
       this.setAttr('step');
 
       this.$input.on('input', function() {
-        $(this).siblings('output').text($(this).val());
+        $(this)
+          .siblings('output')
+          .text($(this).val());
       });
     },
     activate: function() {
@@ -3975,7 +4011,10 @@ $(function(){
       //trigger resize of editableform to re-position container in multi-valued mode
       if (this.isMultiple) {
         this.$input.on('change', function() {
-          $(this).closest('form').parent().triggerHandler('resize');
+          $(this)
+            .closest('form')
+            .parent()
+            .triggerHandler('resize');
         });
       }
     },
@@ -4095,7 +4134,9 @@ $(function(){
     autosubmit: function() {
       this.$input.on('change', function(e, isInitial) {
         if (!isInitial) {
-          $(this).closest('form').submit();
+          $(this)
+            .closest('form')
+            .submit();
         }
       });
     },
@@ -4391,9 +4432,15 @@ $(function(){
       for (i = 0; i <= 11; i++) {
         if (longNames) {
           //see https://github.com/timrwood/momentjs.com/pull/36
-          name = moment().date(1).month(i).format('MMMM');
+          name = moment()
+            .date(1)
+            .month(i)
+            .format('MMMM');
         } else if (shortNames) {
-          name = moment().date(1).month(i).format('MMM');
+          name = moment()
+            .date(1)
+            .month(i)
+            .format('MMM');
         } else if (twoDigit) {
           name = this.leadZero(i + 1);
         } else {
@@ -4793,11 +4840,17 @@ $(function(){
       this.$input.combodate(this.options.combodate);
 
       if ($.fn.editableform.engine === 'bs3') {
-        this.$input.siblings().find('select').addClass('form-control');
+        this.$input
+          .siblings()
+          .find('select')
+          .addClass('form-control');
       }
 
       if (this.options.inputclass) {
-        this.$input.siblings().find('select').addClass(this.options.inputclass);
+        this.$input
+          .siblings()
+          .find('select')
+          .addClass(this.options.inputclass);
       }
       //"clear" link
       /*
@@ -4844,7 +4897,11 @@ $(function(){
     },
 
     activate: function() {
-      this.$input.siblings('.combodate').find('select').eq(0).focus();
+      this.$input
+        .siblings('.combodate')
+        .find('select')
+        .eq(0)
+        .focus();
     },
 
     /*
@@ -4972,7 +5029,10 @@ Editableform based on Twitter Bootstrap 3
                         }
                         */
         if (classes[i].toLowerCase() === 'input-lg') {
-          $btn.find('button').removeClass('btn-sm').addClass('btn-lg');
+          $btn
+            .find('button')
+            .removeClass('btn-sm')
+            .addClass('btn-lg');
         }
       }
     },
@@ -5814,14 +5874,14 @@ Editableform based on Twitter Bootstrap 3
             var // Start of current week: based on weekstart/current date
               ws = new Date(
                 +prevMonth +
-                  (this.o.weekStart - prevMonth.getUTCDay() - 7) % 7 * 864e5
+                  ((this.o.weekStart - prevMonth.getUTCDay() - 7) % 7) * 864e5
               ),
               // Thursday of this week
-              th = new Date(+ws + (7 + 4 - ws.getUTCDay()) % 7 * 864e5),
+              th = new Date(+ws + ((7 + 4 - ws.getUTCDay()) % 7) * 864e5),
               // First Thursday of year, year from thursday
               yth = new Date(
                 +(yth = UTCDate(th.getUTCFullYear(), 0, 1)) +
-                  (7 + 4 - yth.getUTCDay()) % 7 * 864e5
+                  ((7 + 4 - yth.getUTCDay()) % 7) * 864e5
               ),
               // Calendar week: ms between thursdays, div ms per day, div 7 days
               calWeek = (th - yth) / 864e5 / 7 + 1;
@@ -5861,7 +5921,10 @@ Editableform based on Twitter Bootstrap 3
         }
         prevMonth.setUTCDate(prevMonth.getUTCDate() + 1);
       }
-      this.picker.find('.datepicker-days tbody').empty().append(html.join(''));
+      this.picker
+        .find('.datepicker-days tbody')
+        .empty()
+        .append(html.join(''));
       var currentYear = this.date && this.date.getUTCFullYear();
 
       var months = this.picker
@@ -6029,7 +6092,10 @@ Editableform based on Twitter Bootstrap 3
               this.viewDate.setUTCDate(1);
               if (target.is('.month')) {
                 var day = 1;
-                var month = target.parent().find('span').index(target);
+                var month = target
+                  .parent()
+                  .find('span')
+                  .index(target);
                 var year = this.viewDate.getUTCFullYear();
                 this.viewDate.setUTCMonth(month);
                 this._trigger('changeMonth', this.viewDate);
@@ -6653,7 +6719,10 @@ Editableform based on Twitter Bootstrap 3
         m: date.getUTCMonth() + 1,
         M: dates[language].monthsShort[date.getUTCMonth()],
         MM: dates[language].months[date.getUTCMonth()],
-        yy: date.getUTCFullYear().toString().substring(2),
+        yy: date
+          .getUTCFullYear()
+          .toString()
+          .substring(2),
         yyyy: date.getUTCFullYear(),
       };
       val.dd = (val.d < 10 ? '0' : '') + val.d;
@@ -6821,13 +6890,15 @@ $(function(){
 
       //"clear" link
       if (this.options.clear) {
-        this.$clear = $('<a href="#"></a>').html(this.options.clear).click(
-          $.proxy(function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            this.clear();
-          }, this)
-        );
+        this.$clear = $('<a href="#"></a>')
+          .html(this.options.clear)
+          .click(
+            $.proxy(function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              this.clear();
+            }, this)
+          );
 
         this.$tpl
           .parent()
@@ -7178,7 +7249,9 @@ $(function(){
       //adjust container position when viewMode changes
       //see https://github.com/smalot/bootstrap-datetimepicker/pull/80
       this.$input.on('changeMode', function(e) {
-        var f = $(this).closest('form').parent();
+        var f = $(this)
+          .closest('form')
+          .parent();
         //timeout here, otherwise container changes position before form has new size
         setTimeout(function() {
           f.triggerHandler('resize');
@@ -7187,13 +7260,15 @@ $(function(){
 
       //"clear" link
       if (this.options.clear) {
-        this.$clear = $('<a href="#"></a>').html(this.options.clear).click(
-          $.proxy(function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            this.clear();
-          }, this)
-        );
+        this.$clear = $('<a href="#"></a>')
+          .html(this.options.clear)
+          .click(
+            $.proxy(function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              this.clear();
+            }, this)
+          );
 
         this.$tpl
           .parent()

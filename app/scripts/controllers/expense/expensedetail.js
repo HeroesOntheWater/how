@@ -251,7 +251,10 @@ angular
       query.on('child_added', function(snap) {
         var obj = snap.val();
         // console.log("key image ", snap.key);
-        firebase.database().ref('expense/' + snap.key).update(expenseupdate);
+        firebase
+          .database()
+          .ref('expense/' + snap.key)
+          .update(expenseupdate);
         // swal('Expense Updated Successfully!', '', 'success');
       });
     };
@@ -825,7 +828,10 @@ angular
       query.on('child_added', function(snap) {
         var obj = snap.val();
         // console.log("key ", snap.key);
-        firebase.database().ref('expense/' + snap.key).update(expenseupdate);
+        firebase
+          .database()
+          .ref('expense/' + snap.key)
+          .update(expenseupdate);
         // alert("Expense Successfully Updated ");
       });
       // console.log("eee3");
@@ -1064,7 +1070,10 @@ angular
         // console.log("key ", snap.key, ePaymentLog);
         // commonServices.updateData('expense/' + snap.key, ePaymentLog);
         // console.log(ePaymentLog);
-        firebase.database().ref('expense/' + snap.key).update(ePaymentLog);
+        firebase
+          .database()
+          .ref('expense/' + snap.key)
+          .update(ePaymentLog);
 
         swal('Payment Status Updated Successfully!', '', 'success');
       });

@@ -122,20 +122,50 @@ angular
               .html('<input type="checkbox" id="membersTable-select-all">');
           },
           rowCallback: function(row, data, index) {
-            $(row).find('input[type="checkbox"]').eq(0).attr('value', data.key);
+            $(row)
+              .find('input[type="checkbox"]')
+              .eq(0)
+              .attr('value', data.key);
             $(row)
               .find('input[type="checkbox"]')
               .eq(0)
               .attr('data-row-id', data.row_id);
-            $(row).children().eq(1).addClass('tdFname');
-            $(row).children().eq(2).addClass('tdLname');
-            $(row).children().eq(3).addClass('tdDob');
-            $(row).children().eq(4).addClass('tdEmail'); // email checking disabled
-            $(row).children().eq(5).addClass('tdTelly');
-            $(row).children().eq(6).addClass('tdSelectRole');
-            $(row).children().eq(7).addClass('tdPrimaryChapter');
-            $(row).children().eq(8).addClass('tdChapters');
-            $(row).children().eq(9).addClass('tdMil');
+            $(row)
+              .children()
+              .eq(1)
+              .addClass('tdFname');
+            $(row)
+              .children()
+              .eq(2)
+              .addClass('tdLname');
+            $(row)
+              .children()
+              .eq(3)
+              .addClass('tdDob');
+            $(row)
+              .children()
+              .eq(4)
+              .addClass('tdEmail'); // email checking disabled
+            $(row)
+              .children()
+              .eq(5)
+              .addClass('tdTelly');
+            $(row)
+              .children()
+              .eq(6)
+              .addClass('tdSelectRole');
+            $(row)
+              .children()
+              .eq(7)
+              .addClass('tdPrimaryChapter');
+            $(row)
+              .children()
+              .eq(8)
+              .addClass('tdChapters');
+            $(row)
+              .children()
+              .eq(9)
+              .addClass('tdMil');
             for (i = 1; i < 10; i++) {
               if (i !== 4) {
                 $(row)
@@ -152,9 +182,15 @@ angular
             // set currentId to user being edited
             $('#membersTable').off('click', 'tr');
             $('#membersTable').on('click', 'tr', function() {
-              $scope.currId = $(this).find('input[type="checkbox"]').val();
+              $scope.currId = $(this)
+                .find('input[type="checkbox"]')
+                .val();
 
-              if ($(this).find('input[type="checkbox"]').is(':checked')) {
+              if (
+                $(this)
+                  .find('input[type="checkbox"]')
+                  .is(':checked')
+              ) {
                 $scope.checkedBoxes.push($scope.currId);
               } else {
                 for (var i = 0; i < $scope.checkedBoxes.length; i++) {
@@ -570,7 +606,9 @@ angular
                         controller: 'ChangeChapterCtrl',
                         resolve: {
                           selectedUID: function() {
-                            var tempRowId = $(self).parent().data('dt-row');
+                            var tempRowId = $(self)
+                              .parent()
+                              .data('dt-row');
                             var curKey = $(self)
                               .parent()
                               .parent()
@@ -607,7 +645,9 @@ angular
                         controller: 'ManageAdditionalChapters',
                         resolve: {
                           selectedUID: function() {
-                            var tempRowId = $(self).parent().data('dt-row');
+                            var tempRowId = $(self)
+                              .parent()
+                              .data('dt-row');
                             var curKey = $(self)
                               .parent()
                               .parent()

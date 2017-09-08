@@ -809,44 +809,46 @@ angular
               },
             });
 
-            $('#expenseTable').dataTable().yadcf([
-              {
-                column_number: 3,
-                select_type: 'chosen',
-                filter_default_label: 'Expense Originator Name',
-              },
-              {
-                column_number: 4,
-                select_type: 'chosen',
-                filter_default_label: 'Chapter',
-              },
-              {
-                column_number: 5,
-                select_type: 'chosen',
-                filter_default_label: 'Submit Date',
-              },
+            $('#expenseTable')
+              .dataTable()
+              .yadcf([
+                {
+                  column_number: 3,
+                  select_type: 'chosen',
+                  filter_default_label: 'Expense Originator Name',
+                },
+                {
+                  column_number: 4,
+                  select_type: 'chosen',
+                  filter_default_label: 'Chapter',
+                },
+                {
+                  column_number: 5,
+                  select_type: 'chosen',
+                  filter_default_label: 'Submit Date',
+                },
 
-              {
-                column_number: 0,
-                select_type: 'chosen',
-                filter_default_label: 'Event Date',
-              },
-              {
-                column_number: 1,
-                select_type: 'chosen',
-                filter_default_label: 'Amount',
-              },
-              {
-                column_number: 2,
-                select_type: 'chosen',
-                filter_default_label: 'Payment Status',
-              },
-              {
-                column_number: 6,
-                select_type: 'chosen',
-                filter_default_label: 'Past Due',
-              },
-            ]);
+                {
+                  column_number: 0,
+                  select_type: 'chosen',
+                  filter_default_label: 'Event Date',
+                },
+                {
+                  column_number: 1,
+                  select_type: 'chosen',
+                  filter_default_label: 'Amount',
+                },
+                {
+                  column_number: 2,
+                  select_type: 'chosen',
+                  filter_default_label: 'Payment Status',
+                },
+                {
+                  column_number: 6,
+                  select_type: 'chosen',
+                  filter_default_label: 'Past Due',
+                },
+              ]);
 
             // var table = $('#expenseTable').DataTable();
 

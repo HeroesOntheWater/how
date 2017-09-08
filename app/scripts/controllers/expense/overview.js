@@ -1422,89 +1422,91 @@ angular
           $scope.EVTable.destroy();
         }
         // var selected = [];
-        $scope.EVTable = $('#ExpenseViewTable').removeAttr('width').DataTable({
-          responsive: true,
-          autoWidth: false,
-          data: $scope.ExpensebyStatusData, // tabledata,
-          scrollY: '200px',
-          // scrollX: false,
-          scrollCollapse: true,
-          paging: false,
-          dom: 'Bfrtip',
-          buttons: ['excel', 'pdf', 'print'],
-          // fixedColumns: true,
-          // "pagingType": "full_numbers",
-          columns: [
-            {
-              data: 'Region',
-              title: 'Region',
-              width: '70px',
-            },
-            {
-              data: 'Chapter',
-              title: 'Chapter',
-              width: '90px',
-            },
-            {
-              data: 'OriginatorName',
-              title: 'Originator Name',
-              width: '120px',
-            },
-            {
-              data: 'PastWeek',
-              title: 'Past Week',
-              width: '50px',
-              render: $.fn.dataTable.render.number(',', '.', 2, '$'),
-            },
+        $scope.EVTable = $('#ExpenseViewTable')
+          .removeAttr('width')
+          .DataTable({
+            responsive: true,
+            autoWidth: false,
+            data: $scope.ExpensebyStatusData, // tabledata,
+            scrollY: '200px',
+            // scrollX: false,
+            scrollCollapse: true,
+            paging: false,
+            dom: 'Bfrtip',
+            buttons: ['excel', 'pdf', 'print'],
+            // fixedColumns: true,
+            // "pagingType": "full_numbers",
+            columns: [
+              {
+                data: 'Region',
+                title: 'Region',
+                width: '70px',
+              },
+              {
+                data: 'Chapter',
+                title: 'Chapter',
+                width: '90px',
+              },
+              {
+                data: 'OriginatorName',
+                title: 'Originator Name',
+                width: '120px',
+              },
+              {
+                data: 'PastWeek',
+                title: 'Past Week',
+                width: '50px',
+                render: $.fn.dataTable.render.number(',', '.', 2, '$'),
+              },
 
-            {
-              data: 'PastMonth',
-              title: 'Past Month',
-              width: '50px',
-              render: $.fn.dataTable.render.number(',', '.', 2, '$'),
-            },
+              {
+                data: 'PastMonth',
+                title: 'Past Month',
+                width: '50px',
+                render: $.fn.dataTable.render.number(',', '.', 2, '$'),
+              },
 
-            {
-              data: 'Past3Month',
-              title: 'Past 3 Month',
-              width: '50px',
-              render: $.fn.dataTable.render.number(',', '.', 2, '$'),
-            },
+              {
+                data: 'Past3Month',
+                title: 'Past 3 Month',
+                width: '50px',
+                render: $.fn.dataTable.render.number(',', '.', 2, '$'),
+              },
 
-            {
-              data: 'Past1Year',
-              title: 'Past 1 Year',
-              width: '50px',
-              render: $.fn.dataTable.render.number(',', '.', 2, '$'),
-            },
+              {
+                data: 'Past1Year',
+                title: 'Past 1 Year',
+                width: '50px',
+                render: $.fn.dataTable.render.number(',', '.', 2, '$'),
+              },
 
-            {
-              data: 'ALL',
-              title: 'ALL',
-              width: '40px',
-              render: $.fn.dataTable.render.number(',', '.', 2, '$'),
-            },
-          ],
-          columnDefs: [
-            {
-              targets: 0,
-              width: '25%',
-            },
-            {
-              targets: 1,
-              width: '35%',
-            },
-            {
-              targets: 2,
-              // width: "5%"
-            },
-            {
-              targets: 3,
-              // width: "5%"
-            },
-          ],
-          order: [[2, 'desc']],
-        });
+              {
+                data: 'ALL',
+                title: 'ALL',
+                width: '40px',
+                render: $.fn.dataTable.render.number(',', '.', 2, '$'),
+              },
+            ],
+            columnDefs: [
+              {
+                targets: 0,
+                width: '25%',
+              },
+              {
+                targets: 1,
+                width: '35%',
+              },
+              {
+                targets: 2,
+                // width: "5%"
+              },
+              {
+                targets: 3,
+                // width: "5%"
+              },
+            ],
+            order: [[2, 'desc']],
+          });
       });
     };
   });

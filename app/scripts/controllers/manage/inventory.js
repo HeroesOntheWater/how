@@ -87,7 +87,9 @@ angular
               render: function(data) {
                 return (
                   '<input type="checkbox" id="inventoryTable-select" value="' +
-                  $('<div/>').text(data).html() +
+                  $('<div/>')
+                    .text(data)
+                    .html() +
                   '">'
                 );
               },
@@ -113,11 +115,26 @@ angular
               .html('<input type="checkbox" id="inventoryTable-select-all">');
           },
           rowCallback: function(row, data, index) {
-            $(row).children().eq(1).addClass('tdItemName');
-            $(row).children().eq(2).addClass('tdCategory');
-            $(row).children().eq(3).addClass('tdCondition');
-            $(row).children().eq(4).addClass('tdPdate');
-            $(row).children().eq(7).addClass('tdNotes');
+            $(row)
+              .children()
+              .eq(1)
+              .addClass('tdItemName');
+            $(row)
+              .children()
+              .eq(2)
+              .addClass('tdCategory');
+            $(row)
+              .children()
+              .eq(3)
+              .addClass('tdCondition');
+            $(row)
+              .children()
+              .eq(4)
+              .addClass('tdPdate');
+            $(row)
+              .children()
+              .eq(7)
+              .addClass('tdNotes');
             for (i = 1; i < 5; i++) {
               $(row)
                 .children()
