@@ -20,80 +20,69 @@ angular
     $q,
     $location
   ) {
-    var self = this;
-    var originalList = [];
-    $scope.listS = '';
     $scope.lists = {};
-    $scope.form = {};
 
-    $scope.userlist = '';
     $scope.userRole = userService.getRole();
     $scope.userName = userService.getUserData();
     $scope.userChapter = userService.getChapter();
-    $scope.useremail = commonServices.getCurrentUserEmail();
-    var currentdate = new Date();
+    $scope.userEmail = commonServices.getCurrentUserEmail();
+
+
+    var currentDate = new Date();
     // Getting Expense Configuration value
     //Initial Config Load
 
     //Over Age Expense Config settings
     $scope.checkedOverageDays = function() {
-      $scope.expenseconfig = [];
-      $scope.expenseconfig.length = 0;
+      $scope.expenseConfig = [];
       $scope.editstatus = [];
-      $scope.editstatus.length = 0;
 
       commonServices.getData('/Config/Expense').then(function(data) {
         if (data) {
-          $scope.expenseconfig = data;
+          $scope.expenseConfig = data;
 
-          for (var x = 0; x < $scope.expenseconfig.length; x++) {
-            // console.log("Overage config ", currentdate, Date.parse($scope.expenseconfig[x].startdate), $scope.OverAgeWarning, $scope.OverAgeError);
+          // wtf?
+          for (var x = 0; x < $scope.expenseConfig.length; x++) {
             if (
-              Date.parse(currentdate) >=
-                Date.parse($scope.expenseconfig[x].startdate) &&
-              Date.parse(currentdate) <=
-                Date.parse($scope.expenseconfig[x].enddate)
+              Date.parse(currentDate) >=
+                Date.parse($scope.expenseConfig[x].startdate) &&
+              Date.parse(currentDate) <=
+                Date.parse($scope.expenseConfig[x].enddate)
             ) {
-              $scope.OverAgeWarning = $scope.expenseconfig[x].OverAgeWarning;
-              $scope.OverAgeError = $scope.expenseconfig[x].OverAgeError;
-              $scope.OverAgeDays = $scope.expenseconfig[x].OverAgeDays;
+              $scope.OverAgeWarning = $scope.expenseConfig[x].OverAgeWarning;
+              $scope.OverAgeError = $scope.expenseConfig[x].OverAgeError;
+              $scope.OverAgeDays = $scope.expenseConfig[x].OverAgeDays;
             }
           }
 
           //Get EDIT expense record info
           $scope.editExpenseList = expenseservice.getEditStatusrec();
-          $scope.iseditexist = 'false';
+          $scope.isEditExist = 'false';
           var pastdue = 0;
           $scope.$apply(function() {});
           $scope.editExpenseList.$loaded().then(function() {
             angular.forEach($scope.editExpenseList, function(list) {
-              // console.log("list ", list, list.email, $scope.useremail, $scope.iseditexist)
-
               if (
-                list.email == $scope.useremail &&
-                $scope.iseditexist == 'false'
+                list.email == $scope.userEmail &&
+                $scope.isEditExist == 'false'
               ) {
                 $timeout(function() {
-                  $scope.iseditexist = 'true';
+                  $scope.isEditExist = 'true';
                   $scope.editeventdate = list.eventdate;
-
                   //Set the Over Age days message
                   $scope.daysforoverage = 0;
                   pastdue = 0;
                   pastdue = expenseservice.getPastDue(list.eventdate);
-
                   if (pastdue < $scope.OverAgeDays) {
-                    $scope.daysforoverage = $scope.OverAgeDays - pastdue; //60 -
+                    $scope.daysforoverage = $scope.OverAgeDays - pastdue; 
                   }
 
                   if (pastdue == $scope.OverAgeDays) {
-                    $scope.daysforoverage = 0; //60 -
+                    $scope.daysforoverage = 0; 
                   }
                   if (pastdue > $scope.OverAgeDays) {
                     $scope.daysforoverage = pastdue - $scope.OverAgeDays;
                   }
-                  // console.log("pastdd", pastdue, $scope.daysforoverage);
-
                   $scope.editstatus.push({
                     OverAge: $scope.daysforoverage,
                     BillId: list.BillId,
@@ -124,7 +113,7 @@ angular
             });
           });
           // console.log
-          'list out', $scope.useremail, $scope.iseditexist;
+          'list out', $scope.userEmail, $scope.isEditExist;
         }
       });
     };
@@ -132,17 +121,17 @@ angular
     $scope.neweexpense = function() {
       $scope.editExpenseList = expenseservice.getEditStatusrec();
 
-      $scope.iseditexist = 'false';
+      $scope.isEditExist = 'false';
       $scope.editExpenseList.$loaded().then(function() {
         angular.forEach($scope.editExpenseList, function(list) {
           // console.log("list ", list)
 
-          if (list.email == $scope.useremail && $scope.iseditexist == 'false') {
-            $scope.iseditexist = 'true';
+          if (list.email == $scope.userEmail && $scope.isEditExist == 'false') {
+            $scope.isEditExist = 'true';
           }
         });
 
-        if ($scope.iseditexist == 'true') {
+        if ($scope.isEditExist == 'true') {
           swal(
             'You cant create new expense',
             'Previous expense must be submitted',
@@ -186,33 +175,9 @@ angular
 
     //Filter the list on expense in EDIT status
     $scope.Showmeedit = function(BillId) {
-      // switch ($scope.userRole) {
-      //     case 'Volunteer':
-      //     case 'Participant':
-      //     case 'Chapter Lead':
-      // window.location = "#/expense/expensedetail/" + BillId;
       $location.path('/expense/expensedetail/' + BillId);
-      //     break;
-      // default:
-      //     $scope.PayStatus = $scope.paystatuslist[1];
-      //     $scope.ExpenseSearch("edit");
-      //     break;
-      // }
     };
-    //---select
-    $scope.selectedRow = null; // initialize our variable to null
-    $scope.setClickedRow = function(index) {
-      //function that sets the value of selectedRow to current index
-      $scope.selectedRow = index;
-    };
-
-    //---Role Based information ---------------
-
-    var userUID = userService.getId();
-    var userData = commonServices.getData('/userData/' + userUID);
-
-    $scope.Head = '';
-
+    
     $scope.DateRangelist = [
       {
         name: 'Past Week',
@@ -237,8 +202,8 @@ angular
     ];
     $scope.DateFilter = $scope.DateRangelist[2];
 
-    var firstday = new Date(currentdate - 1000 * 60 * 60 * 24 * 90);
-    $scope.startdate = new Date(currentdate - 1000 * 60 * 60 * 24 * 90);
+    var firstday = new Date(currentDate - 1000 * 60 * 60 * 24 * 90);
+    $scope.startdate = new Date(currentDate - 1000 * 60 * 60 * 24 * 90);
     $scope.disp_startdate =
       $scope.startdate.getMonth() +
       1 +
@@ -247,15 +212,15 @@ angular
       '/' +
       $scope.startdate.getFullYear();
     $scope.disp_enddate =
-      currentdate.getMonth() +
+      currentDate.getMonth() +
       1 +
       '/' +
-      currentdate.getDate() +
+      currentDate.getDate() +
       '/' +
-      currentdate.getFullYear();
+      currentDate.getFullYear();
 
-    // $scope.startdate = new Date(currentdate - (1000 * 60 * 60 * 24 * 90));
-    $scope.enddate = currentdate;
+    // $scope.startdate = new Date(currentDate - (1000 * 60 * 60 * 24 * 90));
+    $scope.enddate = currentDate;
     $scope.disp_filterdate =
       $scope.disp_startdate + ' - ' + $scope.disp_enddate;
 
@@ -263,9 +228,9 @@ angular
     $scope.DateFilterChange = function() {
       switch ($scope.DateFilter.value) {
         case 'Past Week':
-          var currentdate = new Date();
-          $scope.startdate = new Date(currentdate - 1000 * 60 * 60 * 24 * 7);
-          $scope.enddate = currentdate;
+          var currentDate = new Date();
+          $scope.startdate = new Date(currentDate - 1000 * 60 * 60 * 24 * 7);
+          $scope.enddate = currentDate;
           $scope.disp_startdate =
             $scope.startdate.getMonth() +
             1 +
@@ -274,21 +239,21 @@ angular
             '/' +
             $scope.startdate.getFullYear();
           $scope.disp_enddate =
-            currentdate.getMonth() +
+            currentDate.getMonth() +
             1 +
             '/' +
-            currentdate.getDate() +
+            currentDate.getDate() +
             '/' +
-            currentdate.getFullYear();
+            currentDate.getFullYear();
           $scope.disp_filterdate =
             $scope.disp_startdate + ' - ' + $scope.disp_enddate;
           $scope.ExpenseSearch('normal');
           break;
 
         case 'Past Month':
-          var currentdate = new Date();
-          $scope.startdate = new Date(currentdate - 1000 * 60 * 60 * 24 * 30);
-          $scope.enddate = currentdate;
+          var currentDate = new Date();
+          $scope.startdate = new Date(currentDate - 1000 * 60 * 60 * 24 * 30);
+          $scope.enddate = currentDate;
           $scope.disp_startdate =
             $scope.startdate.getMonth() +
             1 +
@@ -297,21 +262,21 @@ angular
             '/' +
             $scope.startdate.getFullYear();
           $scope.disp_enddate =
-            currentdate.getMonth() +
+            currentDate.getMonth() +
             1 +
             '/' +
-            currentdate.getDate() +
+            currentDate.getDate() +
             '/' +
-            currentdate.getFullYear();
+            currentDate.getFullYear();
           $scope.disp_filterdate =
             $scope.disp_startdate + ' - ' + $scope.disp_enddate;
           $scope.ExpenseSearch('normal');
           break;
 
         case 'Past 3 Month':
-          var currentdate = new Date();
-          $scope.startdate = new Date(currentdate - 1000 * 60 * 60 * 24 * 90);
-          $scope.enddate = currentdate;
+          var currentDate = new Date();
+          $scope.startdate = new Date(currentDate - 1000 * 60 * 60 * 24 * 90);
+          $scope.enddate = currentDate;
           $scope.disp_startdate =
             $scope.startdate.getMonth() +
             1 +
@@ -320,22 +285,22 @@ angular
             '/' +
             $scope.startdate.getFullYear();
           $scope.disp_enddate =
-            currentdate.getMonth() +
+            currentDate.getMonth() +
             1 +
             '/' +
-            currentdate.getDate() +
+            currentDate.getDate() +
             '/' +
-            currentdate.getFullYear();
+            currentDate.getFullYear();
           $scope.disp_filterdate =
             $scope.disp_startdate + ' - ' + $scope.disp_enddate;
           $scope.ExpenseSearch('normal');
           break;
 
         case 'Past Year':
-          var currentdate = new Date();
-          $scope.startdate = new Date(currentdate - 1000 * 60 * 60 * 24 * 365);
+          var currentDate = new Date();
+          $scope.startdate = new Date(currentDate - 1000 * 60 * 60 * 24 * 365);
 
-          $scope.enddate = currentdate;
+          $scope.enddate = currentDate;
           $scope.disp_startdate =
             $scope.startdate.getMonth() +
             1 +
@@ -344,12 +309,12 @@ angular
             '/' +
             $scope.startdate.getFullYear();
           $scope.disp_enddate =
-            currentdate.getMonth() +
+            currentDate.getMonth() +
             1 +
             '/' +
-            currentdate.getDate() +
+            currentDate.getDate() +
             '/' +
-            currentdate.getFullYear();
+            currentDate.getFullYear();
           $scope.disp_filterdate =
             $scope.disp_startdate + ' - ' + $scope.disp_enddate;
           $scope.ExpenseSearch('normal');
@@ -487,7 +452,7 @@ angular
 
     $scope.today = function() {
       $scope.startdate = firstday;
-      $scope.enddate = currentdate;
+      $scope.enddate = currentDate;
     };
 
     $scope.today();
@@ -517,8 +482,8 @@ angular
     };
 
     $scope.clear = function() {
-      $scope.startdate = new Date(currentdate.getFullYear(), 0, 1);
-      $scope.enddate = currentdate;
+      $scope.startdate = new Date(currentDate.getFullYear(), 0, 1);
+      $scope.enddate = currentDate;
     };
 
     $scope.dateOptions = {
@@ -549,8 +514,8 @@ angular
     //------------UI Bootstrap Date -----END--------------//
     //----Past Due - Expense list function -------Start -----------//
     $scope.filterPastDue = function() {
-      $scope.startdate = new Date(currentdate.getFullYear() - 5, 0, 1);
-      $scope.enddate = new Date(currentdate - 1000 * 60 * 60 * 24 * 30);
+      $scope.startdate = new Date(currentDate.getFullYear() - 5, 0, 1);
+      $scope.enddate = new Date(currentDate - 1000 * 60 * 60 * 24 * 30);
       //(1000 * 60 * 60 * 24 * 60) - 60 Day prior calculation
 
       switch ($scope.userRole) {
@@ -592,10 +557,10 @@ angular
       $scope.ExpenseSearch('normal');
     };
 
-    $scope.ExpenseSearch = function(searchtype) {
-      // console.log("SEARCH - ", $scope.useremail, $scope.userRole, $scope.userChapter, $scope.startdate, $scope.enddate, $scope.PayStatus.value);
+    $scope.ExpenseSearch = function() {
+      // console.log("SEARCH - ", $scope.userEmail, $scope.userRole, $scope.userChapter, $scope.startdate, $scope.enddate, $scope.PayStatus.value);
       $scope.lists = expenseservice.getViewExpenseData(
-        $scope.useremail,
+        $scope.userEmail,
         $scope.userRole,
         $scope.userChapter
       );
@@ -607,7 +572,7 @@ angular
         $scope.startdate,
         $scope.enddate,
         $scope.PayStatus.value,
-        searchtype
+        
       );
     };
 
@@ -618,9 +583,9 @@ angular
       startdate,
       enddate,
       paystatus,
-      searchtype
+      
     ) {
-      var currentdate = new Date();
+      var currentDate = new Date();
       var expensearray = [];
       $scope.selectedbills = [];
       $scope.selectedbills.length = 0;
@@ -644,7 +609,7 @@ angular
               pastdue = expenseservice.getPastDue(list[i].eventdate);
             } else pastdue = '';
 
-            // if (searchtype == 'edit' && list[i].PaymentStatus == 'Edit') {
+            // if ( == 'edit' && list[i].PaymentStatus == 'Edit') {
             //     // && list[i].PaymentStatus != 'Over Age') {
 
             //     expensearray.push({
@@ -657,9 +622,9 @@ angular
             //         "pastdue": pastdue,
             //         "BillId": list[i].BillId
             //     });
-            //     // console.log("Edit - ", expensearray, searchtype, list[i].PaymentStatus);
+            //     // console.log("Edit - ", expensearray, , list[i].PaymentStatus);
             // } else {
-            //     if (searchtype != 'edit') {
+            //     if ( != 'edit') {
             expensearray.push({
               SubmitDate: list[i].SubmitDate,
               SubmitBy: list[i].SubmitBy,
@@ -670,7 +635,7 @@ angular
               pastdue: pastdue,
               BillId: list[i].BillId,
             });
-            // console.log("Non-Edit - ", expensearray, searchtype, list[i].PaymentStatus);
+            // console.log("Non-Edit - ", expensearray, , list[i].PaymentStatus);
             // }
             // }
           }
@@ -877,7 +842,7 @@ angular
     //Get Quick Over view Data - Pie Chart and Table Data
     $scope.GetQuickOverviewData = function() {
       $scope.dashlist = expenseservice.getViewExpenseData(
-        $scope.useremail,
+        $scope.userEmail,
         $scope.userRole,
         $scope.userChapter
       );
@@ -1023,14 +988,14 @@ angular
     };
 
     // var rptdata = [];
-    var currentdate = new Date();
+    var currentDate = new Date();
     var reportDate =
-      currentdate.getMonth() +
+      currentDate.getMonth() +
       1 +
       '/' +
-      currentdate.getDate() +
+      currentDate.getDate() +
       '/' +
-      currentdate.getFullYear();
+      currentDate.getFullYear();
 
     var GetTableData;
 
@@ -1038,7 +1003,7 @@ angular
 
     var GetJsonData = function() {
       var rptdata = [];
-      var useremail = commonServices.getCurrentUserEmail();
+      var userEmail = commonServices.getCurrentUserEmail();
       // $scope.userRole = $rootScope.userRole;
       // $scope.userName = $rootScope.userName;
       // $scope.userChapter = $rootScope.userChapter;
@@ -1049,7 +1014,7 @@ angular
 
           // console.log("first check - ", value[i].PaymentStatus, $scope.PayStatus.value);
           // console.log("second check - ", Date.parse(value[i].SubmitDate), Date.parse($scope.startdate), Date.parse($scope.enddate));
-          // console.log("third check - ", $scope.userRole, value[i].email, useremail);
+          // console.log("third check - ", $scope.userRole, value[i].email, userEmail);
 
           if (
             (value[i].PaymentStatus == $scope.PayStatus.value ||
@@ -1058,7 +1023,7 @@ angular
               Date.parse(value[i].SubmitDate) <= Date.parse($scope.enddate)) &&
             (($scope.userRole == 'Participant' ||
               $scope.userRole == 'Volunteer') &&
-              value[i].email == useremail)
+              value[i].email == userEmail)
           ) {
             var reportdata = {
               Date: value[i].eventdate,
@@ -1158,14 +1123,14 @@ angular
       //Get Report Data - Data fileterd based on Dropdown/Date value
       $scope.ExpenseSearch('normal'); //populate $scope.lists data
       // console.log("Get Report Data", $scope.lists, $scope.startdate, $scope.enddate);
-      var currentdate = new Date();
+      var currentDate = new Date();
       var reportDate =
-        currentdate.getMonth() +
+        currentDate.getMonth() +
         1 +
         '/' +
-        currentdate.getDate() +
+        currentDate.getDate() +
         '/' +
-        currentdate.getFullYear();
+        currentDate.getFullYear();
       var Chaptername = $scope.userChapter.text;
       var sdate =
         $scope.startdate.getMonth() +
@@ -1194,13 +1159,13 @@ angular
 
       $scope.rptdata = [];
 
-      var useremail = commonServices.getCurrentUserEmail();
+      var userEmail = commonServices.getCurrentUserEmail();
 
       $scope.lists.$loaded().then(function(value) {
         for (var i = 0; i < value.length; i++) {
           // console.log("first check - ", value[i].PaymentStatus, $scope.PayStatus.value);
           // console.log("second check - ", Date.parse(value[i].SubmitDate), Date.parse($scope.startdate), Date.parse($scope.enddate));
-          // console.log("third check - ", $scope.userRole, value[i].email, useremail);
+          // console.log("third check - ", $scope.userRole, value[i].email, userEmail);
 
           if (
             (value[i].PaymentStatus == $scope.PayStatus.value ||
@@ -1209,7 +1174,7 @@ angular
               Date.parse(value[i].SubmitDate) <= Date.parse($scope.enddate)) &&
             (($scope.userRole == 'Participant' ||
               $scope.userRole == 'Volunteer') &&
-              value[i].email == useremail)
+              value[i].email == userEmail)
           ) {
             var reportdata = {
               'Event Date': value[i].eventdate,

@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc function
- * @name ohanaApp.controller:ExpenseExpenseconfigCtrl
+ * @name ohanaApp.controller:ExpenseConfigCtrl
  * @description
- * # ExpenseExpenseconfigCtrl
+ * # ExpenseConfigCtrl
  * Controller of the ohanaApp
  */
 angular
   .module('ohanaApp')
-  .controller('ExpenseExpenseconfigCtrl', function(
+  .controller('ExpenseConfigCtrl', function(
     $scope,
     commonServices,
     userService,
@@ -17,10 +17,10 @@ angular
     $location
   ) {
     $scope.ConfigLog = [];
-    $scope.expenseconfig = [];
+    $scope.expenseConfig = [];
     $scope.ConfigLog.length = 0;
-    $scope.expenseconfig.length = 0;
-    $scope.expenseconfigdata = [];
+    $scope.expenseConfig.length = 0;
+    $scope.expenseConfigData = [];
 
     $scope.opened = {};
 
@@ -31,36 +31,36 @@ angular
       $scope.opened[elementOpened] = !$scope.opened[elementOpened];
     };
 
-    $scope.expenseconfig.startdate = new Date();
-    $scope.expenseconfig.enddate = new Date();
-    $scope.expenseconfig = [];
-    $scope.expenseconfig.length = 0;
+    $scope.expenseConfig.startDate = new Date();
+    $scope.expenseConfig.endDate = new Date();
+    $scope.expenseConfig = [];
+    $scope.expenseConfig.length = 0;
 
     $scope.saveConfig = function(data, id) {
       // check if date range is valid
-      if (!$scope.isDateValid($scope.expenseconfig[id - 1])) {
+      if (!$scope.isDateValid($scope.expenseConfig[id - 1])) {
         swal('Invalid', 'Date range is invalid!', 'warning');
       } else {
-        $scope.expenseconfigdata.push({
+        $scope.expenseConfigData.push({
           id: id,
-          startdate: $scope.expenseconfig[id - 1].startdate,
-          enddate: $scope.expenseconfig[id - 1].enddate,
-          MileRate: $scope.expenseconfig[id - 1].MileRate,
-          TrailerRate: $scope.expenseconfig[id - 1].TrailerRate,
-          OverAgeWarning: $scope.expenseconfig[id - 1].OverAgeWarning,
-          OverAgeError: $scope.expenseconfig[id - 1].OverAgeError,
-          OverAgeDays: $scope.expenseconfig[id - 1].OverAgeDays,
+          startDate: $scope.expenseConfig[id - 1].startDate,
+          endDate: $scope.expenseConfig[id - 1].endDate,
+          MileRate: $scope.expenseConfig[id - 1].MileRate,
+          TrailerRate: $scope.expenseConfig[id - 1].TrailerRate,
+          OverAgeWarning: $scope.expenseConfig[id - 1].OverAgeWarning,
+          OverAgeError: $scope.expenseConfig[id - 1].OverAgeError,
+          OverAgeDays: $scope.expenseConfig[id - 1].OverAgeDays,
         });
 
-        $scope.expenseconfigdata.push(data);
+        $scope.expenseConfigData.push(data);
 
         angular.extend(data, {
           id: id,
         });
 
-        // $scope.expenseconfig = $scope.expenseconfigdata;
+        // $scope.expenseConfig = $scope.expenseConfigData;
         $scope.updateconfigdata();
-        console.log('save ', data, id, $scope.expenseconfigdata);
+        console.log('save ', data, id, $scope.expenseConfigData);
       }
     };
 
@@ -84,7 +84,7 @@ angular
         buttonsStyling: false,
       }).then(function() {
         console.log(currIndex);
-        $scope.expenseconfig.splice(index, 1);
+        $scope.expenseConfig.splice(index, 1);
         swal('Deleted!', 'Your config has been deleted.', 'success');
       });
       //update config list
@@ -95,12 +95,12 @@ angular
     $scope.addConfig = function() {
       var recid = 0;
 
-      if ($scope.expenseconfig !== undefined) {
-        recid = $scope.expenseconfig.length + 1;
+      if ($scope.expenseConfig !== undefined) {
+        recid = $scope.expenseConfig.length + 1;
         $scope.inserted = {
-          id: $scope.expenseconfig.length + 1,
-          startdate: '',
-          enddate: '',
+          id: $scope.expenseConfig.length + 1,
+          startDate: '',
+          endDate: '',
           MileRate: 0,
           TrailerRate: 0,
           OverAgeWarning: 30,
@@ -109,11 +109,11 @@ angular
         };
       } else {
         console.log('emo');
-        $scope.expenseconfig = [];
+        $scope.expenseConfig = [];
         $scope.inserted = {
           id: 1,
-          startdate: '',
-          enddate: '',
+          startDate: '',
+          endDate: '',
           MileRate: 0,
           TrailerRate: 0,
           OverAgeWarning: 0,
@@ -121,16 +121,16 @@ angular
           OverAgeDays: 0,
         };
       }
-      $scope.expenseconfig.push($scope.inserted);
+      $scope.expenseConfig.push($scope.inserted);
     };
 
     //---------------
 
     //Initial Config Load
 
-    function loadexpenseconfig() {
-      $scope.expenseconfig = [];
-      $scope.expenseconfig.length = 0;
+    function loadexpenseConfig() {
+      $scope.expenseConfig = [];
+      $scope.expenseConfig.length = 0;
       $scope.ConfigLog = [];
       $scope.ConfigLog.length = 0;
       console.log('Entry');
@@ -139,15 +139,15 @@ angular
         .then(function(data) {
           if (data) {
             $scope.ConfigLog = data.ExpenseLog;
-            $scope.expenseconfig = data.Expense;
+            $scope.expenseConfig = data.Expense;
             $scope.$apply(function() {});
             $scope.buildConfigData();
             // console.log("Entry2", $scope.ConfigLog);
           } else {
-            $scope.expenseconfig.push({
+            $scope.expenseConfig.push({
               id: 1,
-              startdate: '',
-              enddate: '',
+              startDate: '',
+              endDate: '',
               MileRate: 0,
               TrailerRate: 0,
               OverAgeWarning: 0,
@@ -160,14 +160,14 @@ angular
         })
         .catch(function(error) {
           console.log('Entry4');
-          $scope.expenseconfig = [];
+          $scope.expenseConfig = [];
           $scope.ConfigLog = [];
         });
 
       // $scope.buildConfigData();
     }
 
-    loadexpenseconfig();
+    loadexpenseConfig();
 
     //function call to handle the "cancel" button on an edit config row
     // if dates are not set or invalid then remove this config
@@ -175,14 +175,14 @@ angular
       // check dates
       var currIndex = index.id - 1;
       // check if dates are valid, if not pop up alert that they will not be saved.
-      $scope.expenseconfig.splice(currIndex, 1);
+      $scope.expenseConfig.splice(currIndex, 1);
       $scope.updateconfigdata();
     };
 
     // check if date is valid
     $scope.isDateValid = function(expenseConfig) {
-      var startDate = expenseConfig.startdate;
-      var endDate = expenseConfig.enddate;
+      var startDate = expenseConfig.startDate;
+      var endDate = expenseConfig.endDate;
       // check if date is empty string or null
       if (
         startDate === '' ||
@@ -195,7 +195,7 @@ angular
       // check if start date is after end date
       // convert earlier objects to moment objects
       startDate = moment(expenseConfig.startDate);
-      endDate = moment(expenseConfig.enddate);
+      endDate = moment(expenseConfig.endDate);
       if (startDate.isAfter(endDate)) {
         return false;
       }
@@ -257,13 +257,13 @@ angular
           delete $scope.ConfigLog[x].$$hashKey;
         }
       }
-      for (var x = 0; x < $scope.expenseconfig.length; x++) {
-        if ($scope.expenseconfig[x] != null) {
-          delete $scope.expenseconfig[x].$$hashKey;
+      for (var x = 0; x < $scope.expenseConfig.length; x++) {
+        if ($scope.expenseConfig[x] != null) {
+          delete $scope.expenseConfig[x].$$hashKey;
         }
       }
       $scope.config = {
-        Expense: $scope.expenseconfig,
+        Expense: $scope.expenseConfig,
         ExpenseLog: $scope.ConfigLog,
       };
 
@@ -277,7 +277,7 @@ angular
           timer: 2500,
         });
       }
-      loadexpenseconfig();
+      loadexpenseConfig();
       $scope.buildConfigData();
     };
 

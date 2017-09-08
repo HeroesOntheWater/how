@@ -176,7 +176,7 @@ angular
       })
       .when('/expense/expenseconfig', {
         templateUrl: 'views/expense/expenseconfig.html',
-        controller: 'ExpenseExpenseconfigCtrl',
+        controller: 'ExpenseConfigCtrl',
         controllerAs: 'expense/expenseconfig',
       })
       .otherwise({

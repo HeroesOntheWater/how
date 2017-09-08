@@ -1,4 +1,4 @@
-<div class="container" ng-init="loadexpenseconfig()">
+<div class="container" ng-init="loadexpenseConfig()">
   <div class=" panel panel-primary ">
     <div class="panel-heading clearfix ">
       <h3 class="panel-title pull-left ">HOW Expense Configuration</h3>
@@ -18,12 +18,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="item in expenseconfig ">
+          <tr ng-repeat="item in expenseConfig ">
             <td>
-              <a e-style="width: 90px " href="# " editable-bsdate="item.startdate " e-is-open="opened.$data " e-ng-click="open($event, '$data') " e-datepicker-popup="dd-MMMM-yyyy ">    {{ (item.startdate | date:"MM/dd/yyyy ") || 'empty' }}  </a>
+              <a e-style="width: 90px " href="# " editable-bsdate="item.startDate " e-is-open="opened.$data " e-ng-click="open($event, '$data') " e-datepicker-popup="dd-MMMM-yyyy ">    {{ (item.startDate | date:"MM/dd/yyyy ") || 'empty' }}  </a>
             </td>
             <td>
-              <a e-style="width: 90px " href="# " editable-bsdate="item.enddate " e-is-open="opened.$data " e-ng-click="open($event, '$data') " e-datepicker-popup="dd-MMMM-yyyy ">    {{ (item.enddate | date:"MM/dd/yyyy ") || 'empty' }}  </a>
+              <a e-style="width: 90px " href="# " editable-bsdate="item.endDate " e-is-open="opened.$data " e-ng-click="open($event, '$data') " e-datepicker-popup="dd-MMMM-yyyy ">    {{ (item.endDate | date:"MM/dd/yyyy ") || 'empty' }}  </a>
             </td>
             <td>
               <input id=MileRate name=MileRate class="textboxsize " ng-model="item.MileRate " type="text " format-as-currency>
