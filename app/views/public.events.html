@@ -1,79 +1,87 @@
-<div class="container">
-  <h3>Events</h3>
-  <div style="display: flex; flex-direction:column">
-    <div class="form-group" style="flex-basis:100%">
-      <label class="control-label" for="fname">Search:</label>
-      <div>
-        <input id="fname" name="newQuery.search" type="text" placeholder="Enter query here" class="form-control input-md pull-left" ng-change="filtersRunner()" ng-model="newQuery.search" ng-required="true" ng-model-options='{ debounce: 1000 }'>
-      </div>
-    </div>
-    <div class="form-group">
-      <div>
-        <label class="control-label">filter between:</label>
-      </div>
-      <div style="display:flex; justify-content:space-between">
-        <div style="flex-basis:45%">
-          <label class="control-label">Lower bound:</label>
-          <p class="input-group">
-            <input type="text" class="form-control" ng-model="dt" datetime-picker="MM/dd/yyyy HH:mm" is-open="popup1.opened">
-            <!--uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats" />-->
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
-            </span>
-          </p>
-        </div>
-        <div style="flex-basis:45%">
-          <label class="control-label">Upper bound:</label>
-          <p class="input-group">
-            <input type="text" class="form-control" ng-model="dt2" datetime-picker="MM/dd/yyyy HH:mm" is-open="popup2.opened">
-            <!--uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats" />-->
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
-            </span>
-          </p>
-        </div>
-      </div>
-      <!--<input type="text" class="form-control" is-open="thad" datetime-picker="MM/dd/yyyy HH:mm" ng-model="datez">-->
-      <!--<input type="text" class="form-control" datetime-picker="mediumDate" ng-model="picker1_date" is-open="thad" enable-time="false" datepicker-options="thad2" close-on-date-selection="false" datepicker-append-to-body="true">-->
-    </div>
-  </div>
-  <div class="row event-row">
-    <div class="col-md-4" ng-repeat="(key, event) in eventList">
-      <!--<div>{{event}}</div>
-            <div>{{userService.getId()}}</div>-->
-      <div class="panel panel-default">
-        <div class="panel-heading clearfix">
-          <h3 class="panel-title pull-left">{{event.name}}</h3>
-        </div>
+<div style="padding-left:15px; padding-right:15px; margin-left:55px; margin-right:55px; overflow-x:auto">
+  <div style="width: 1600px">
+    <h3>Events</h3>
+    <div style="display: flex; flex-direction:column">
+      <div class="form-group" style="flex-basis:100%">
+        <label class="control-label" for="fname">Search:</label>
         <div>
-          <img src="/assets/images/logos/logo-md.png" class="img-responsive" width="100%">
+          <input id="fname" name="newQuery.search" type="text" placeholder="Enter query here" class="form-control input-md pull-left"
+            ng-change="filtersRunner()" ng-model="newQuery.search" ng-required="true" ng-model-options='{ debounce: 1000 }'>
         </div>
-        <div class="list-group">
-          <div class="list-group-item">
-            <h6 class="list-group-item-text">Start Time</h6>
-            <h4 class="list-group-item-heading">{{event.startTime | date:'MM-dd-yyyy HH:mm a'}}</h4>
+      </div>
+      <div class="form-group">
+        <div>
+          <label class="control-label">filter between:</label>
+        </div>
+        <div style="display:flex; justify-content:space-between">
+          <div style="flex-basis:45%">
+            <label class="control-label">Lower bound:</label>
+            <p class="input-group">
+              <input type="text" class="form-control" ng-model="dt" datetime-picker="MM/dd/yyyy HH:mm" is-open="popup1.opened">
+              <!--uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats" />-->
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open()">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+              </span>
+            </p>
           </div>
-          <div class="list-group-item">
-            <h6 class="list-group-item-text">End Time</h6>
-            <h4 class="list-group-item-heading">{{event.endTime | date:'MM-dd-yyyy HH:mm a'}}</h4>
-          </div>
-          <div class="list-group-item">
-            <h6 class="list-group-item-text">Location</h6>
-            <h4 class="list-group-item-heading">{{event.location}}</h4>
+          <div style="flex-basis:45%">
+            <label class="control-label">Upper bound:</label>
+            <p class="input-group">
+              <input type="text" class="form-control" ng-model="dt2" datetime-picker="MM/dd/yyyy HH:mm" is-open="popup2.opened">
+              <!--uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats" />-->
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open2()">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+              </span>
+            </p>
           </div>
         </div>
-        <!--<div ng-if="userService.getRole()" class="panel-footer" style="height:55px">
+        <!--<input type="text" class="form-control" is-open="thad" datetime-picker="MM/dd/yyyy HH:mm" ng-model="datez">-->
+        <!--<input type="text" class="form-control" datetime-picker="mediumDate" ng-model="picker1_date" is-open="thad" enable-time="false" datepicker-options="thad2" close-on-date-selection="false" datepicker-append-to-body="true">-->
+      </div>
+    </div>
+    <div class="row event-row">
+      <div class="col-md-4" ng-repeat="(key, event) in eventList">
+        <!--<div>{{event}}</div>
+            <div>{{userService.getId()}}</div>-->
+        <div class="panel panel-default">
+          <div class="panel-heading clearfix">
+            <h3 class="panel-title pull-left">{{event.name}}</h3>
+          </div>
+          <div>
+            <img src="/assets/images/logos/logo-md.png" class="img-responsive" width="100%">
+          </div>
+          <div class="list-group">
+            <div class="list-group-item">
+              <h6 class="list-group-item-text">Start Time</h6>
+              <h4 class="list-group-item-heading">{{event.startTime | date:'MM-dd-yyyy HH:mm a'}}</h4>
+            </div>
+            <div class="list-group-item">
+              <h6 class="list-group-item-text">End Time</h6>
+              <h4 class="list-group-item-heading">{{event.endTime | date:'MM-dd-yyyy HH:mm a'}}</h4>
+            </div>
+            <div class="list-group-item">
+              <h6 class="list-group-item-text">Location</h6>
+              <h4 class="list-group-item-heading">{{event.location}}</h4>
+            </div>
+          </div>
+          <!--<div ng-if="userService.getRole()" class="panel-footer" style="height:55px">
                     <a class="btn btn-primary pull-right" style="display:inline-block; margin-left:4px" ng-click="showDescription($index)">More Details</a>
                     <a class="btn btn-primary pull-right" style="display:inline-block; margin-left:4px" ng-click="joinEvent($index)">Attending?</a>
                     <a ng-if="userService.getRole()!=='Participant'" style="display:inline-block; margin-left:4px" class="btn btn-primary pull-right" ng-click="volunteer($index)">Volunteering</a>
                 </div>-->
-        <div class="panel-footer">
-          <a class="btn btn-primary" style="display:inline-block; margin:2px" ng-click="showDescription(key)">More Details</a>
-          <!--<a class="btn btn-primary" style="display:inline-block; margin:2px" ng-click="joinEvent($index)">{{()?:'Attending'?}}</a>-->
-          <a ng-if="userService.getRole()" style="display:inline-block; margin:2px" class="btn btn-primary" ng-click="addParticipant(key, $index)">
-            {{(allParticipantIsDisableds[$index]['isDisabled'])?'Registered To attend':'Attending?'}}</a>
-          <a ng-if="userService.getRole() && userService.getRole()!=='Participant'" style="display:inline-block; margin:2px" class="btn btn-primary" ng-click="addVolunteer(key, $index)">
-            {{(allVolunteerIsDisableds[$index]['isDisabled'])?'Registered To Volunteer':'Volunteering?'}}</a>
+          <div class="panel-footer">
+            <a class="btn btn-primary" style="display:inline-block; margin:2px" ng-click="showDescription(key)">More Details</a>
+            <!--<a class="btn btn-primary" style="display:inline-block; margin:2px" ng-click="joinEvent($index)">{{()?:'Attending'?}}</a>-->
+            <a ng-if="userService.getRole()" style="display:inline-block; margin:2px" class="btn btn-primary" ng-click="addParticipant(key, $index)">
+              {{(allParticipantIsDisableds[$index]['isDisabled'])?'Registered To attend':'Attending?'}}</a>
+            <a ng-if="userService.getRole() && userService.getRole()!=='Participant'" style="display:inline-block; margin:2px" class="btn btn-primary"
+              ng-click="addVolunteer(key, $index)">
+              {{(allVolunteerIsDisableds[$index]['isDisabled'])?'Registered To Volunteer':'Volunteering?'}}</a>
+          </div>
         </div>
       </div>
     </div>
