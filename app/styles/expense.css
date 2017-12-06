@@ -1,4 +1,18 @@
-     /* Added for DATE PICKER */
+/* KEVIN css */
+
+.config-form-fields {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  width:100%;
+}
+
+
+/* END KEVIN CSS */
+
+ 
+ 
+ /* Added for DATE PICKER */
 
      .full button span {
        background-color: limegreen;

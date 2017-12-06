@@ -14,8 +14,36 @@ angular
     commonServices,
     userService,
     $q,
+    $uibModal,
     $location
   ) {
+
+    /* BEGIN KEVIN OVERHAUL */
+    
+
+    $scope.openExpenseConfigModal = function () {
+      $scope.modalInstance = $uibModal.open({
+        scope: $scope,
+        templateUrl: '../../../views/expense/expenseConfigModal.html',
+      })
+    }
+    $scope.closeExpenseConfigModal = function () {
+      $uibModal.close();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* END KEVIN OVERHAUL */
     $scope.ConfigLog = [];
     $scope.expenseConfig = [];
     $scope.ConfigLog.length = 0;

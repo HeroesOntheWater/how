@@ -45,23 +45,14 @@
               </p>
             </td>
             <td class="col-xs-2">
-              <!-- form -->
-              <form editable-form name="rowform" onbeforesave="saveConfig($data,item.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == item">
-                <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
-                  save
-                </button>
-                <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel(); cancel(item)" class="btn btn-default">
-                  cancel
-                </button>
-              </form>
-              <div ng-show="!rowform.$visible">
+              <div>
                 <input type="button" class="btn btn-primary" ng-click="rowform.$show()" value="Edit">
                 <input type="button" class="btn btn-danger" ng-click="removeConfig($index)" value="Delete">
               </div>
             </td>
           </tr>
       </table>
-      <input type="button" class="btn btn-primary" ng-click="addConfig()" value="Add Row">
+      <input type="button" class="btn btn-primary" ng-click="openExpenseConfigModal()" value="New Expense Configuration">
       <input type="button" class="btn btn-primary" ng-click="GoBack()" value="Go Back to View Expense List ">
     </div>
   </div>

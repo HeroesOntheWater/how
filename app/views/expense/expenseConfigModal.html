@@ -1,0 +1,42 @@
+<div class="modal-header">
+  <h3 class="modal-title" id="modal-title">New Expense Configuration</h3>
+</div>
+<div class="modal-body" id="modal-body" style="display:flex">
+  <form novalidate style="width:80%">
+    <div class = "config-form-fields">
+      <label>Valid From: </label>
+      <input type="text" ng-model="user.name" />
+    </div>
+    <div class = "config-form-fields">
+      <label>Valid To: </label> 
+      <input type="email" ng-model="user.email"></input>
+    </div>
+    <div class = "config-form-fields">
+      <label>Mileage Rate ($ compensation / mile): </label> 
+      <input type="text" ng-model="user.name" />
+    </div>
+    <div class = "config-form-fields">
+      <label>Trailer Rate ($ compensation / mile): </label>
+      <input type="email" ng-model="user.email" />
+    </div>
+    <div class = "config-form-fields">
+      <label>Warning (OverAge): </label>
+      <input type="text" ng-model="user.name" />
+    </div>
+    <div class = "config-form-fields">
+      <label>Needs Attention (Over Age):</label>
+      <input type="email" ng-model="user.email" />
+      </div>
+    <div class = "config-form-fields">
+      <label>Over Age: </label> 
+      <input type="email" ng-model="user.email" />
+    </div>
+ </form>
+
+
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">Save</button>
+  <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+</div>
