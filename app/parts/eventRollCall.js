@@ -24,41 +24,46 @@ angular
     $scope.eventData = eventData;
 
     $scope.initialize = function() {
-      
-      if (!_.isUndefined($scope.eventData.type) && $scope.eventData.type === 'participants') {
+      if (
+        !_.isUndefined($scope.eventData.type) &&
+        $scope.eventData.type === 'participants'
+      ) {
         $scope.selectedOption = {
           value: 'participants',
-          text: 'Participants'
+          text: 'Participants',
         };
-      } else if (!_.isUndefined($scope.eventData.type) && $scope.eventData.type === 'volunteers') {
+      } else if (
+        !_.isUndefined($scope.eventData.type) &&
+        $scope.eventData.type === 'volunteers'
+      ) {
         $scope.selectedOption = {
           value: 'volunteers',
-          text: 'Volunteers'
+          text: 'Volunteers',
         };
       } else {
         $scope.selectedOption = {
           value: 'all',
-          text: 'All'
+          text: 'All',
         };
       }
 
       $scope.listOptions = [
         {
           value: 'participants',
-          text: 'Participants'
+          text: 'Participants',
         },
         {
           value: 'volunteers',
-          text: 'Volunteers'
+          text: 'Volunteers',
         },
         {
           value: 'guest',
-          text: 'Guests'
+          text: 'Guests',
         },
         {
           value: 'all',
-          text: 'All'
-        }
+          text: 'All',
+        },
       ];
 
       $scope.createUserList($scope.selectedOption.value);
@@ -97,16 +102,13 @@ angular
         var guestCounter = 0;
         _.each(userList, function(user) {
           if (!user.guest) {
-            promiseArray.push(
-              commonServices.getData('userData/' + user.key)
-            );
+            promiseArray.push(commonServices.getData('userData/' + user.key));
           }
           guestCounter++;
         });
 
         // Run promise array and handle returned data.
         $q.all(promiseArray).then(function(data) {
-
           _.each(data, function(userData) {
             var counter = 0;
             _.each(userList, function(currentUser) {
@@ -127,7 +129,6 @@ angular
     };
 
     $scope.isAttending = function(userData) {
-
       var counter = 0;
       var status = true;
       if (userData.attended) {
@@ -137,13 +138,27 @@ angular
       _.each($scope.userList, function(ul) {
         if (ul.key === userData.key) {
           $scope.userList[counter].attended = status;
-          $scope.userList[counter].color = (status ? '#d4edda' : '#f8d7da');
+          $scope.userList[counter].color = status ? '#d4edda' : '#f8d7da';
           if ($scope.userList.type === 'participant') {
-            commonServices.updateData('events/' + $scope.eventData.event.key + '/participants/' + ul.index + '/attended', status);
+            commonServices.updateData(
+              'events/' +
+                $scope.eventData.event.key +
+                '/participants/' +
+                ul.index +
+                '/attended',
+              status
+            );
           } else {
-            commonServices.updateData('events/' + $scope.eventData.event.key + '/volunteers/' + ul.index + '/attended', status);
+            commonServices.updateData(
+              'events/' +
+                $scope.eventData.event.key +
+                '/volunteers/' +
+                ul.index +
+                '/attended',
+              status
+            );
           }
-          
+
           return false;
         }
         counter++;
@@ -153,7 +168,9 @@ angular
     $scope.setColor = function() {
       var counter = 0;
       _.each($scope.userList, function(currentUser) {
-        $scope.userList[counter].color = (currentUser.attended ? '#d4edda' : '#f8d7da');
+        $scope.userList[counter].color = currentUser.attended
+          ? '#d4edda'
+          : '#f8d7da';
         counter++;
       });
     };
@@ -201,8 +218,5 @@ angular
       }
 
       $scope.getUserData(userList);
-
     };
-
-    
   });
