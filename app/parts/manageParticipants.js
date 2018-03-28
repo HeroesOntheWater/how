@@ -72,6 +72,19 @@ angular
         resolve: {
           eventData: function() {
             return $scope.eventData;
+          }
+        },
+      });
+    };
+
+    $scope.rollCall = function() {
+      $uibModalInstance.dismiss('cancel');
+      $uibModal.open({
+        templateUrl: '/parts/eventRollCall.html',
+        controller: 'EventRollCall',
+        resolve: {
+          eventData: function() {
+            return $scope.eventData;
           },
         },
       });

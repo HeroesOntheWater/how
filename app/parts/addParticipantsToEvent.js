@@ -695,8 +695,8 @@ angular
           resolve: {
             eventData: function() {
               return $scope.eventData;
-            },
-          },
+            }
+          }
         });
       });
     };

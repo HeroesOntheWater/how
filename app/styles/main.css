@@ -218,6 +218,12 @@ a:visited {
   border: 1px solid #ccc;
 }
 
+.modal-scroll {
+  height: 575px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 
 /* Styling for Profile page */
 
@@ -246,4 +252,10 @@ a:visited {
 
 .child {
   word-break: break-all;
+}
+
+.rollcall-user-row {
+  border: 2px solid red;
+  border-radius: 10px;
+  border-color: #ddd;
 }
