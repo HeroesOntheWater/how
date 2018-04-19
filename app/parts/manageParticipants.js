@@ -41,6 +41,7 @@ angular
       $uibModal.open({
         templateUrl: '/parts/addParticipantsToEvent.html',
         controller: 'AddParticipantToEvent',
+        backdrop: 'static',
         resolve: {
           eventData: function() {
             return $scope.eventData;
@@ -55,6 +56,7 @@ angular
       $uibModal.open({
         templateUrl: '/parts/sign_event_waiver.html',
         controller: 'SignEventWaiver',
+        backdrop: 'static',
         resolve: {
           eventData: function() {
             return $scope.eventData;
@@ -69,6 +71,7 @@ angular
       $uibModal.open({
         templateUrl: '/parts/sign_media_waiver.html',
         controller: 'SignMediaWaiver',
+        backdrop: 'static',
         resolve: {
           eventData: function() {
             return $scope.eventData;
@@ -82,6 +85,7 @@ angular
       $uibModal.open({
         templateUrl: '/parts/eventRollCall.html',
         controller: 'EventRollCall',
+        backdrop: 'static',
         resolve: {
           eventData: function() {
             return $scope.eventData;

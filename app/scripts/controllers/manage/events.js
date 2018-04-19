@@ -59,7 +59,6 @@ angular
             event.key = key;
             allEvents.push(event);
           });
-          console.log(allEvents);
           $scope.eventList = allEvents;
         } else {
           console.log('Failed to get Events...');
@@ -180,6 +179,7 @@ angular
       $uibModal.open({
         templateUrl: '/parts/newEventForm.html',
         controller: 'NewEventFormCtrl',
+        backdrop: 'static',
         resolve: {
           eventData: function() {
             return {
@@ -196,6 +196,7 @@ angular
       $uibModal.open({
         templateUrl: '/parts/newEventForm.html',
         controller: 'NewEventFormCtrl',
+        backdrop: 'static',
         resolve: {
           eventData: function() {
             return {
@@ -212,6 +213,7 @@ angular
       $uibModal.open({
         templateUrl: '/parts/manageParticipants.html',
         controller: 'ManageParticipantsCtrl',
+        backdrop: 'static',
         resolve: {
           eventData: function() {
             return {
@@ -250,11 +252,6 @@ angular
           });
           $q.all([result]).then(function(data) {
             $scope.loadAll();
-            if (data[0]) {
-              console.log(result);
-            } else {
-              console.log('Log: Error on deletion');
-            }
           });
         },
         function(dismiss) {

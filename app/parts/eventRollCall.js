@@ -98,13 +98,11 @@ angular
         $scope.listEmpty = true;
       } else {
         // Get id for each participant, and create promise.
-        var guestList = [];
-        var guestCounter = 0;
-        _.each(userList, function(user) {
+        userList = _.each(userList, function(user) {
           if (!user.guest) {
             promiseArray.push(commonServices.getData('userData/' + user.key));
           }
-          guestCounter++;
+          user.show = true;
         });
 
         // Run promise array and handle returned data.
@@ -121,9 +119,9 @@ angular
             });
           });
 
+          console.log(userList);
           $scope.userList = userList;
           $scope.setColor();
-          console.log($scope.userList);
         });
       }
     };
@@ -139,7 +137,7 @@ angular
         if (ul.key === userData.key) {
           $scope.userList[counter].attended = status;
           $scope.userList[counter].color = status ? '#d4edda' : '#f8d7da';
-          if ($scope.userList.type === 'participant') {
+          if (ul.type === 'participant') {
             commonServices.updateData(
               'events/' +
                 $scope.eventData.event.key +
@@ -217,6 +215,36 @@ angular
         });
       }
 
+      console.log(userList);
+
       $scope.getUserData(userList);
+    };
+
+    $scope.searchUserList = function(queryString) {
+      console.log(queryString);
+      var count = 0;
+      _.each($scope.userList, function(user) {
+        switch (queryString) {
+          case user.name.first:
+            $scope.userList[count].show = true;
+            break;
+          case user.name.last:
+            $scope.userList[count].show = true;
+            break;
+          case user.email:
+            $scope.userList[count].show = true;
+            break;
+          default:
+            $scope.userList[count].show = false;
+            break;
+        }
+        count++;
+      });
+    };
+
+    $scope.clearSearch = function() {
+      $scope.userList = _.each($scope.userList, function(user) {
+        user.show = true;
+      });
     };
   });
