@@ -221,25 +221,25 @@ angular
     };
 
     $scope.searchUserList = function(queryString) {
-        console.log(queryString);
-        var count = 0;
-        _.each($scope.userList, function(user) {
-          switch (queryString) {
-            case user.name.first: 
-              $scope.userList[count].show = true;
-              break;
-            case user.name.last: 
-              $scope.userList[count].show = true;
-              break;
-            case user.email: 
-              $scope.userList[count].show = true;
-              break;
-            default:
-              $scope.userList[count].show = false; 
-              break;
-          }
-          count++;
-        });
+      console.log(queryString);
+      var count = 0;
+      _.each($scope.userList, function(user) {
+        switch (queryString) {
+          case user.name.first:
+            $scope.userList[count].show = true;
+            break;
+          case user.name.last:
+            $scope.userList[count].show = true;
+            break;
+          case user.email:
+            $scope.userList[count].show = true;
+            break;
+          default:
+            $scope.userList[count].show = false;
+            break;
+        }
+        count++;
+      });
     };
 
     $scope.clearSearch = function() {
@@ -247,5 +247,4 @@ angular
         user.show = true;
       });
     };
-
   });

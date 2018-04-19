@@ -37,7 +37,7 @@ angular
       var modalInstance = $uibModal.open({
         templateUrl: '/parts/newUserDirectoryForm.html',
         controller: 'NewUserDirectoryFormCtrl',
-        backdrop: 'static'
+        backdrop: 'static',
       });
       if (!modalInstance) {
         $scope.update();
@@ -47,7 +47,7 @@ angular
     $scope.passwordReset = function() {
       var modalInstance = $uibModal.open({
         templateUrl: '/parts/passwordReset.html',
-        controller: 'passwordResetFormCtrl'
+        controller: 'passwordResetFormCtrl',
       });
       if (!modalInstance) {
         $scope.update();

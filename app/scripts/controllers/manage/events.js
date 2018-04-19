@@ -185,7 +185,7 @@ angular
             return {
               event: false,
               isEdit: false,
-              step: 'admin'
+              step: 'admin',
             };
           },
         },
@@ -202,7 +202,7 @@ angular
             return {
               event: event,
               isEdit: true,
-              step: 'admin'
+              step: 'admin',
             };
           },
         },
@@ -219,7 +219,7 @@ angular
             return {
               event: event,
               step: 'admin',
-              type: type
+              type: type,
             };
           },
         },
@@ -240,7 +240,7 @@ angular
         showCancelButton: true,
         confirmButtonColor: '#DD6B55',
         confirmButtonText: "Yes, delete '" + selected.name + "'",
-        cancelButtonText: 'Cancel'
+        cancelButtonText: 'Cancel',
       }).then(
         function(result) {
           console.log('confirm');
@@ -248,7 +248,7 @@ angular
           swal({
             text: 'Deleting ' + selected.name,
             type: 'success',
-            timer: 2500
+            timer: 2500,
           });
           $q.all([result]).then(function(data) {
             $scope.loadAll();
