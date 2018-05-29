@@ -139,7 +139,9 @@
               ? window
               : typeof global !== 'undefined'
                 ? global
-                : typeof self !== 'undefined' ? self : this;
+                : typeof self !== 'undefined'
+                  ? self
+                  : this;
           var FONT_IDENTITY_MATRIX = [0.001, 0, 0, 0.001, 0, 0];
           var TextRenderingMode = {
             FILL: 0,
@@ -2422,7 +2424,9 @@
               get host() {
                 return this._isInvalid
                   ? ''
-                  : this._port ? this._host + ':' + this._port : this._host;
+                  : this._port
+                    ? this._host + ':' + this._port
+                    : this._host;
               },
               set host(host) {
                 if (this._isInvalid || !this._isRelative) {
@@ -3162,8 +3166,12 @@
                 return;
               }
               style.fontWeight = font.black
-                ? font.bold ? '900' : 'bold'
-                : font.bold ? 'bold' : 'normal';
+                ? font.bold
+                  ? '900'
+                  : 'bold'
+                : font.bold
+                  ? 'bold'
+                  : 'normal';
               style.fontStyle = font.italic ? 'italic' : 'normal';
               var fontFamily = font.loadedName
                 ? '"' + font.loadedName + '", '
@@ -6088,8 +6096,12 @@
                 ? fontObj.fontMatrix
                 : FONT_IDENTITY_MATRIX;
               var bold = fontObj.black
-                ? fontObj.bold ? 'bolder' : 'bold'
-                : fontObj.bold ? 'bold' : 'normal';
+                ? fontObj.bold
+                  ? 'bolder'
+                  : 'bold'
+                : fontObj.bold
+                  ? 'bold'
+                  : 'normal';
               var italic = fontObj.italic ? 'italic' : 'normal';
               if (size < 0) {
                 size = -size;
@@ -9127,13 +9139,17 @@
               var name = fontObj.loadedName || 'sans-serif';
               var bold = fontObj.black
                 ? '900'
-                : fontObj.bold ? 'bold' : 'normal';
+                : fontObj.bold
+                  ? 'bold'
+                  : 'normal';
               var italic = fontObj.italic ? 'italic' : 'normal';
               var typeface = '"' + name + '", ' + fontObj.fallbackName;
               var browserFontSize =
                 size < MIN_FONT_SIZE
                   ? MIN_FONT_SIZE
-                  : size > MAX_FONT_SIZE ? MAX_FONT_SIZE : size;
+                  : size > MAX_FONT_SIZE
+                    ? MAX_FONT_SIZE
+                    : size;
               this.current.fontSizeScale = size / browserFontSize;
               var rule =
                 italic + ' ' + bold + ' ' + browserFontSize + 'px ' + typeface;
