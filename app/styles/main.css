@@ -74,7 +74,6 @@ a:visited {
   color: inherit;
 }
 
-
 /*
 .ng-invalid.ng-dirty {
 	border-color: #FA787E;
@@ -88,7 +87,6 @@ a:visited {
   border-bottom: none;
   color: black;
 }
-
 
 /* EVENTS CSS */
 
@@ -141,13 +139,11 @@ a:visited {
   *border-right-color: #ffffff;
 }
 
-
 /* event details leftside-nav spacing off of right side */
 
 .spacercol {
   width: 40px !important;
 }
-
 
 /* ui-select height */
 
@@ -156,13 +152,11 @@ a:visited {
   height: 1em;
 }
 
-
 /* ui-select padding */
 
 .ui-select-multiple.ui-select-bootstrap {
   padding: 6px 12px 6px 12px;
 }
-
 
 /* events cards field title text formatting */
 
@@ -171,7 +165,6 @@ a:visited {
   margin-top: 0px;
   margin-bottom: 5px;
 }
-
 
 /* styling for 'Role Change Requests' */
 
@@ -207,7 +200,6 @@ a:visited {
   background-image: none;
 }
 
-
 /* Styling for registration modal */
 
 .highlight_field {
@@ -223,7 +215,6 @@ a:visited {
   overflow-y: auto;
   overflow-x: hidden;
 }
-
 
 /* Styling for Profile page */
 

@@ -20,13 +20,14 @@
     <div class="form-group" style="margin-left: 0px; margin-right: 0px;">
       <label class="control-label" for="fname">Search:</label>
       <div>
-        <input id="fname" name="newQuery.search" type="text" placeholder="Enter query here" class="form-control input-md pull-left" ng-change="search()" ng-model="newQuery.search" ng-required="true" ng-model-options='{ debounce: 100 }'>
+        <!-- <input id="fname" name="newQuery.search" type="text" placeholder="Enter query here" class="form-control input-md pull-left" ng-change="search()" ng-model="newQuery.search" ng-required="true" ng-model-options='{ debounce: 100 }'> -->
+        <input id="fname" name="newQuery.search" type="text" placeholder="Enter query here" class="form-control input-md pull-left" ng-model="newQuery.search.$" ng-required="true" ng-model-options='{ debounce: 100 }'>
       </div>
     </div>
   </form>
 
   <div class="row event-row">
-    <div class="col-md-4" ng-repeat="event in eventList">
+    <div class="col-md-4" ng-repeat="event in eventList | filter:newQuery.search">
       <div class="panel panel-default">
         <div class="panel-heading clearfix">
           <h3 class="panel-title pull-left">{{event.name}}</h3>
