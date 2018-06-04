@@ -1,6 +1,5 @@
 /* getinvolved styling */
 
-
 /* get involved href links text style */
 
 #getInvolved-link {
@@ -11,7 +10,6 @@
 a:hover {
   color: #caa128
 }
-
 
 /* hero image and text */
 
@@ -41,7 +39,6 @@ a:hover {
   margin-left: -90px;
   width: 180px;
 }
-
 
 /* body */
 
@@ -74,7 +71,6 @@ a:hover {
   line-height: 1.15em;
   display: inline;
 }
-
 
 /* donatebanner */
 
@@ -133,7 +129,6 @@ a:hover {
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-
 
 /* MEDIA QUERIES */
 

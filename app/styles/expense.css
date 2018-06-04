@@ -11,6 +11,7 @@
        border-radius: 32px;
        color: black;
      }
+
      /* 
 * Expense Creation form fields
 */
@@ -147,6 +148,7 @@
      .pastdue {
        background-color: red !important;
      }
+
      /* input:invalid {
          border: 2px solid red;
      }
@@ -163,6 +165,7 @@
      .file-browser {
        visibility: hidden;
      }
+
      /* 
  To remove the “No file chosen” tooltip from a file input
  */
@@ -225,6 +228,7 @@
        padding-bottom: 6px;
        padding-top: 6px;
      }
+
      /* #OtherExpensebtn {
      visibility: hidden;
  }*/
@@ -334,6 +338,7 @@
          box-shadow: 0 0 3px #b21a00;
        }
      }
+
      /*Red -- #B20000
 */
 
@@ -408,18 +413,21 @@
        font-size: 16px;
        background-color: yellow;
      }
+
      /* begin kevin css for expenses*/
 
      .load-image-group {
        margin-top: 15px;
        margin-bottom: 15px;
      }
+
      /* bootstrap row override */
 
      .row {
        margin-left: 0;
        margin-right: 0;
      }
+
      /* new expense page panel heading background */
 
      .expense-panel-heading {

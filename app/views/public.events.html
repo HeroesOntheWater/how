@@ -4,7 +4,8 @@
     <div class="form-group" style="flex-basis:100%">
       <label class="control-label" for="fname">Search:</label>
       <div>
-        <input id="fname" name="newQuery.search" type="text" placeholder="Enter query here" class="form-control input-md pull-left" ng-change="filtersRunner()" ng-model="newQuery.search" ng-required="true" ng-model-options='{ debounce: 1000 }'>
+        <!-- <input id="fname" name="newQuery.search" type="text" placeholder="Enter query here" class="form-control input-md pull-left" ng-change="filtersRunner()" ng-model="newQuery.search.$" ng-required="true" ng-model-options='{ debounce: 1000 }'> -->
+        <input id="fname" name="newQuery.search" type="text" placeholder="Enter query here" class="form-control input-md pull-left" ng-model="newQuery.search.$" ng-required="true" ng-model-options='{ debounce: 1000 }'>
       </div>
     </div>
     <div class="form-group">
@@ -12,7 +13,7 @@
         <div style="flex-basis:45%">
           <label class="control-label">Start Date:</label>
           <p class="input-group">
-            <input type="text" class="form-control" ng-model="dt" datetime-picker="MM/dd/yyyy h:mm a" is-open="popup1.opened">
+            <input type="text" class="form-control" ng-model="newQuery.dtStart" datetime-picker="MM/dd/yyyy h:mm a" is-open="popup1.opened">
             <span class="input-group-btn">
               <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
             </span>
@@ -21,7 +22,7 @@
         <div style="flex-basis:45%">
           <label class="control-label">End Date:</label>
           <p class="input-group">
-            <input type="text" class="form-control" ng-model="dt2" datetime-picker="MM/dd/yyyy h:mm a" is-open="popup2.opened">
+            <input type="text" class="form-control" ng-model="newQuery.dtEnd" datetime-picker="MM/dd/yyyy h:mm a" is-open="popup2.opened">
             <span class="input-group-btn">
               <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
             </span>
@@ -31,7 +32,7 @@
     </div>
   </div>
   <div class="row event-row">
-    <div class="col-md-4" ng-repeat="(key, event) in eventList">
+    <div class="col-md-4" ng-repeat="(key, event) in eventList | filter:newQuery.search | eventFilter:{start:newQuery.dtStart,end:newQuery.dtEnd}">
       <div class="panel panel-default">
         <div class="panel-heading clearfix">
           <h3 class="panel-title pull-left">{{event.name}}</h3>

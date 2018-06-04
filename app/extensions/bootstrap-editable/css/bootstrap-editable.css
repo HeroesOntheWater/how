@@ -17,7 +17,6 @@
   /* overwriting bootstrap line-height. See #133 */
 }
 
-
 /* 
   BS3 width:1005 for inputs breaks editable form in popup 
   See: https://github.com/vitalets/x-editable/issues/393
@@ -60,7 +59,6 @@
   margin-left: 7px;
 }
 
-
 /*for jquery-ui buttons need set height to look more pretty*/
 
 .editable-buttons button.ui-button-icon-only {
@@ -86,7 +84,6 @@
   white-space: normal;
 }
 
-
 /*add padding for jquery ui*/
 
 .editable-error-block.ui-state-error {
@@ -97,7 +94,6 @@
   color: red;
 }
 
-
 /* ---- For specific types ---- */
 
 .editableform .editable-date {
@@ -106,14 +102,12 @@
   float: left;
 }
 
-
 /* move datepicker icon to center of add-on button. See https://github.com/vitalets/x-editable/issues/183 */
 
 .editable-inline .add-on .icon-th {
   margin-top: 3px;
   margin-left: 1px;
 }
-
 
 /* checklist vertical alignment */
 
@@ -127,14 +121,12 @@
   white-space: nowrap;
 }
 
-
 /* set exact width of textarea to fit buttons toolbar */
 
 .editable-wysihtml5 {
   width: 566px;
   height: 250px;
 }
-
 
 /* clear button shown as link in date inputs */
 
@@ -144,7 +136,6 @@
   text-decoration: none;
   text-align: right;
 }
-
 
 /* IOS-style clear button for text inputs */
 
@@ -235,14 +226,12 @@ a.editable-click.editable-disabled:hover {
   transition: background-color 1400ms ease-out;
 }
 
-
 /*see https://github.com/vitalets/x-editable/issues/139 */
 
 .form-horizontal .editable {
   padding-top: 5px;
   display: inline-block;
 }
-
 
 /*!
  * Datepicker for Bootstrap
