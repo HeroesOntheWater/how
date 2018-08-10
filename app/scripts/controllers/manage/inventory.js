@@ -386,7 +386,7 @@ angular
 
     $scope.add = function() {
       var modalInstance = $uibModal.open({
-        templateUrl: '/parts/newItemInventoryForm.html',
+        templateUrl: '/modals/views/newItemInventoryForm.html',
         controller: 'NewItemInventoryFormCtrl',
       });
       if (!modalInstance) {

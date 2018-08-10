@@ -80,7 +80,7 @@ angular
         // Move user back to manage event for now (change this when we reuse module)
         $uibModalInstance.dismiss('cancel');
         $uibModal.open({
-          templateUrl: '/parts/manageParticipants.html',
+          templateUrl: '/modals/views/manageParticipants.html',
           controller: 'ManageParticipantsCtrl',
           resolve: {
             eventData: function() {

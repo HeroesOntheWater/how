@@ -98,7 +98,7 @@ angular
 
     $scope.add = function() {
       var modalInstance = $uibModal.open({
-        templateUrl: '/parts/newEventDirectoryForm.html',
+        templateUrl: '/modals/views/newEventDirectoryForm.html',
         controller: 'NewEventDirectoryFormCtrl',
       });
       modalInstance.result.then(function() {

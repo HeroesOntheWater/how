@@ -61,7 +61,7 @@ angular
     $scope.viewAttendees = function(type) {
       $scope.cancel();
       $uibModal.open({
-        templateUrl: '/parts/manageParticipants.html',
+        templateUrl: '/modals/views/manageParticipants.html',
         controller: 'ManageParticipantsCtrl',
         resolve: {
           eventData: function() {
@@ -78,7 +78,7 @@ angular
     $scope.editEvent = function() {
       $uibModalInstance.dismiss('cancel');
       $uibModal.open({
-        templateUrl: '/parts/newEventForm.html',
+        templateUrl: '/modals/views/newEventForm.html',
         controller: 'NewEventFormCtrl',
         resolve: {
           eventData: function() {

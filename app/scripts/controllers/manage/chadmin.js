@@ -386,7 +386,7 @@ angular
 
     $scope.addChapter = function() {
       var modalInstance = $uibModal.open({
-        templateUrl: '/parts/chapterAdd.html',
+        templateUrl: '/modals/views/chapterAdd.html',
         controller: 'ChapterAddCtrl',
       });
     };

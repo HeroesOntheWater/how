@@ -39,7 +39,7 @@ angular
     $scope.addParticipantToEvent = function() {
       $uibModalInstance.dismiss('cancel');
       $uibModal.open({
-        templateUrl: '/parts/addParticipantsToEvent.html',
+        templateUrl: '/modals/views/addParticipantsToEvent.html',
         controller: 'AddParticipantToEvent',
         backdrop: 'static',
         resolve: {
@@ -54,7 +54,7 @@ angular
     $scope.participantSignWaiver = function() {
       $uibModalInstance.dismiss('cancel');
       $uibModal.open({
-        templateUrl: '/parts/sign_event_waiver.html',
+        templateUrl: '/modals/views/sign_event_waiver.html',
         controller: 'SignEventWaiver',
         backdrop: 'static',
         resolve: {
@@ -69,7 +69,7 @@ angular
     $scope.participantSignMediaWaiver = function() {
       $uibModalInstance.dismiss('cancel');
       $uibModal.open({
-        templateUrl: '/parts/sign_media_waiver.html',
+        templateUrl: '/modals/views/sign_media_waiver.html',
         controller: 'SignMediaWaiver',
         backdrop: 'static',
         resolve: {
@@ -83,7 +83,7 @@ angular
     $scope.rollCall = function() {
       $uibModalInstance.dismiss('cancel');
       $uibModal.open({
-        templateUrl: '/parts/eventRollCall.html',
+        templateUrl: '/modals/views/eventRollCall.html',
         controller: 'EventRollCall',
         backdrop: 'static',
         resolve: {
@@ -127,7 +127,7 @@ angular
       $uibModalInstance.dismiss('cancel');
       if ($scope.eventData.step === 'public') {
         var modalInstance = $uibModal.open({
-          templateUrl: '/parts/public.events.description.html',
+          templateUrl: '/modals/views/public.events.description.html',
           controller: 'PublicEventsDescriptionCtrl',
           resolve: {
             event: function() {

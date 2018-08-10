@@ -182,7 +182,7 @@ angular
 
     $scope.showDescription = function(index) {
       var modalInstance = $uibModal.open({
-        templateUrl: '/parts/public.events.description.html',
+        templateUrl: '/modals/views/public.events.description.html',
         controller: 'PublicEventsDescriptionCtrl',
         resolve: {
           event: function() {
