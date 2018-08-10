@@ -54,7 +54,7 @@ angular
 
     $scope.changePassword = function() {
       var modalInstance = $uibModal.open({
-        templateUrl: '/parts/changePassword.html',
+        templateUrl: '/modals/views/changePassword.html',
         controller: 'changePassword',
       });
     };
@@ -141,7 +141,7 @@ angular
     // Call Modals
     $scope.changeChapter = function() {
       var modalInstance = $uibModal.open({
-        templateUrl: '/parts/changeChapter.html',
+        templateUrl: '/modals/views/changeChapter.html',
         controller: 'ChangeChapterCtrl',
         resolve: {
           selectedUID: function() {
@@ -153,7 +153,7 @@ angular
 
     $scope.editChapters = function() {
       var modalInstance = $uibModal.open({
-        templateUrl: '/parts/manageadditionalchapters.html',
+        templateUrl: '/modals/views/manageadditionalchapters.html',
         controller: 'ManageAdditionalChapters',
         resolve: {
           selectedUID: function() {
@@ -165,7 +165,7 @@ angular
 
     $scope.roleChangeRequest = function() {
       var modalInstance = $uibModal.open({
-        templateUrl: '/parts/rolerequestchangeform.html',
+        templateUrl: '/modals/views/rolerequestchangeform.html',
         controller: 'RoleRequestChangeFormCtrl as rrcf',
       });
       if (!modalInstance) {
@@ -175,14 +175,14 @@ angular
 
     $scope.roleChangeStatus = function() {
       var modalInstance = $uibModal.open({
-        templateUrl: '/parts/profileRoleChangeStatus.html',
+        templateUrl: '/modals/views/profileRoleChangeStatus.html',
         controller: 'ProfileRoleChangeStatus as rcs',
       });
     };
 
     $scope.feedBackRequest = function() {
       var modalInstance = $uibModal.open({
-        templateUrl: '/parts/giveFeedback.html',
+        templateUrl: '/modals/views/giveFeedback.html',
         controller: 'GiveFeedbackCtrl as feedback',
       });
     };

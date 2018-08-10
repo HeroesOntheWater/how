@@ -384,7 +384,7 @@ angular
                 .find('div#member-row-data')
                 .data('key');
               var modalInstance = $uibModal.open({
-                templateUrl: '/parts/changeChapter.html',
+                templateUrl: '/modals/views/changeChapter.html',
                 controller: 'ChangeChapterCtrl',
                 resolve: {
                   selectedUID: function() {
@@ -401,7 +401,7 @@ angular
                 .find('div#member-row-data')
                 .data('key');
               var modalInstance = $uibModal.open({
-                templateUrl: '/parts/manageadditionalchapters.html',
+                templateUrl: '/modals/views/manageadditionalchapters.html',
                 controller: 'ManageAdditionalChapters',
                 resolve: {
                   selectedUID: function() {
@@ -663,7 +663,7 @@ angular
                         )
                         .data('key');
                       var modalInstance = $uibModal.open({
-                        templateUrl: '/parts/changeChapter.html',
+                        templateUrl: '/modals/views/changeChapter.html',
                         controller: 'ChangeChapterCtrl',
                         resolve: {
                           selectedUID: function() {
@@ -700,7 +700,7 @@ angular
                         )
                         .data('key');
                       var modalInstance = $uibModal.open({
-                        templateUrl: '/parts/manageadditionalchapters.html',
+                        templateUrl: '/modals/views/manageadditionalchapters.html',
                         controller: 'ManageAdditionalChapters',
                         resolve: {
                           selectedUID: function() {
@@ -822,14 +822,14 @@ angular
 
     $scope.roleChangeRequests = function() {
       var modalInstance = $uibModal.open({
-        templateUrl: '/parts/managerolechangerequest.html',
+        templateUrl: '/modals/views/managerolechangerequest.html',
         controller: 'ManageRoleChangeRequestCtrl',
       });
     };
 
     $scope.chapterStatus = function() {
       var modalInstance = $uibModal.open({
-        templateUrl: '/parts/chapterStatus.html',
+        templateUrl: '/modals/views/chapterStatus.html',
         controller: 'ChapterStatusCtrl',
       });
     };

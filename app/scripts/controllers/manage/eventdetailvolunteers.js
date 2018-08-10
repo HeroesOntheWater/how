@@ -24,7 +24,7 @@ angular
     $scope.add = function() {
       var modalInstance = $uibModal.open({
         scope: $scope,
-        templateUrl: '/parts/addParticipantsToEvent.html',
+        templateUrl: '/modals/views/addParticipantsToEvent.html',
         controller: 'EventaddvolunteersCtrl',
       });
     }; // end $scope.add

@@ -231,7 +231,7 @@ module.exports = function(grunt) {
                         // '<%= yeoman.app %>/extensions/bootstrap-editable/css/bootstrap-editable.css',
                         // '<%= yeoman.app %>/extensions/hamburgers.min.css',
                         '<%= yeoman.app %>/assets/**.js',
-                        '<%= yeoman.app %>/parts/**.js'
+                        '<%= yeoman.app %>/modals/controllers/**.js'
                     ],
                 }
             }
@@ -316,7 +316,7 @@ module.exports = function(grunt) {
             dist: {
                 src: [
                     '<%= yeoman.dist %>/scripts/**/*.js',
-                    '<%= yeoman.dist %>/parts/**/*.js',
+                    '<%= yeoman.dist %>/modals/controllers/**/*.js',
                     '<%= yeoman.dist %>/styles/**/*.css',
                     '<%= yeoman.dist %>/extensions/**/*.css',
                     '<%= yeoman.dist %>/assets/**/*.css',
@@ -347,7 +347,7 @@ module.exports = function(grunt) {
 
         // Performs rewrites based on filerev and the useminPrepare configuration
         usemin: {
-            html: ['<%= yeoman.dist %>/parts/**/*.html',
+            html: ['<%= yeoman.dist %>/modals/views/**/*.html',
                 '<%= yeoman.dist %>/views/**/*.html',
                 '<%= yeoman.dist %>/*.html'
             ],
@@ -357,7 +357,7 @@ module.exports = function(grunt) {
             ],
             js: [
                 '<%= yeoman.dist %>/scripts/**/*.js',
-                '<%= yeoman.dist %>/parts/**/*.js'
+                '<%= yeoman.dist %>/modals/controllers/**/*.js'
             ],
             options: {
                 assetsDirs: [
@@ -448,7 +448,7 @@ module.exports = function(grunt) {
                     usemin: 'scripts/scripts.js'
                 },
                 cwd: '<%= yeoman.app %>',
-                src: ['views/**/*.html', 'parts/**/*.html'],
+                src: ['views/**/*.html', 'modals/views/**/*.html'],
                 dest: '.tmp/templateCache.js'
             }
         },
@@ -505,7 +505,7 @@ module.exports = function(grunt) {
                         'styles/**/*.css',
                         'assets/**/*.*',
                         'assets/**/*',
-                        'parts/**/*.html',
+                        'modals/views/**/*.html',
                         'extensions/bootstrap-editable/css/bootstrap-editable.css',
                         'extensions/hamburgers.min.css'
                         // 'parts/**/*.*'

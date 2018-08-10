@@ -10,7 +10,7 @@
  */
 angular
   .module('ohanaApp')
-  .controller('SignEventWaiver', function(
+  .controller('SignMediaWaiver', function(
     eventData,
     $rootScope,
     $q,
@@ -22,6 +22,12 @@ angular
   ) {
     'use strict';
     $scope.eventData = eventData;
+
+    $scope.waiverForm = {};
+
+    console.log('got into the modal!');
+
+    // Date time picker options
     $scope.datePopup = {
       opened: false,
     };
@@ -29,7 +35,14 @@ angular
     $scope.openDate = function() {
       $scope.datePopup.opened = true;
     };
-    console.log('got into the modal!');
+
+    $scope.witnessDate = {
+      opened: false,
+    };
+
+    $scope.openWitnessDate = function() {
+      $scope.witnessDate.opened = true;
+    };
 
     $scope.updateMediaWaiverTemplate = function(a, idx) {
       var val = a.value;
@@ -37,6 +50,7 @@ angular
     };
     $scope.submitData = function(form) {
       if (form.$invalid) {
+        console.log('got an error');
         swal({
           text:
             'The form has required fields that are missing data or formatted improperly.',
@@ -61,7 +75,7 @@ angular
         // Move user back to manage event for now (change this when we reuse module)
         $uibModalInstance.dismiss('cancel');
         $uibModal.open({
-          templateUrl: '/parts/manageParticipants.html',
+          templateUrl: '/modals/views/manageParticipants.html',
           controller: 'ManageParticipantsCtrl',
           resolve: {
             eventData: function() {

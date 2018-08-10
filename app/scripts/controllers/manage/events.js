@@ -177,7 +177,7 @@ angular
 
     $scope.add = function() {
       $uibModal.open({
-        templateUrl: '/parts/newEventForm.html',
+        templateUrl: '/modals/views/newEventForm.html',
         controller: 'NewEventFormCtrl',
         backdrop: 'static',
         resolve: {
@@ -194,7 +194,7 @@ angular
 
     $scope.edit = function(event) {
       $uibModal.open({
-        templateUrl: '/parts/newEventForm.html',
+        templateUrl: '/modals/views/newEventForm.html',
         controller: 'NewEventFormCtrl',
         backdrop: 'static',
         resolve: {
@@ -211,7 +211,7 @@ angular
 
     $scope.viewAttendees = function(event, type) {
       $uibModal.open({
-        templateUrl: '/parts/manageParticipants.html',
+        templateUrl: '/modals/views/manageParticipants.html',
         controller: 'ManageParticipantsCtrl',
         backdrop: 'static',
         resolve: {
