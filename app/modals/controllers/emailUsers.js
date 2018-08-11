@@ -17,14 +17,24 @@ angular
     commonServices,
     $scope,
     $uibModalInstance,
-    $uibModal
+    $uibModal,
+    $http
   ) {
     'use strict';
 
     console.log(emailData);
 
-    $scope.cancel = function() {
+    $scope.cancel = () => {
         $uibModalInstance.dismiss('cancel');
+    };
+
+    $scope.sendEmail = () => {
+        var emailPromise = commonServices.emailService();
+        $q.all([emailPromise]).then(function(data) {
+            if (data[0]) {
+                // success here
+            };
+        });
     };
 
    

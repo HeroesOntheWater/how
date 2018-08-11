@@ -14,7 +14,8 @@ angular.module('ohanaApp').service('commonServices', [
   'expenseservice',
   '$firebaseArray',
   '$q',
-  function($rootScope, $firebaseAuth, DAO, expenseservice, $firebaseArray, $q) {
+  '$http',
+  function($rootScope, $firebaseAuth, DAO, expenseservice, $firebaseArray, $q, $http) {
     /******************************************************
      *           User Management - start                  *
      *******************************************************/
@@ -538,6 +539,40 @@ angular.module('ohanaApp').service('commonServices', [
           console.log('ERROR: ' + error.code + ': ' + error.message);
         });
     };
+
+    // Get Email Token
+    this.emailService = function() {
+      var token = 'test';
+      var tokenReq = {method: 'GET', url: 'http://localhost:8080/token?token=' + token};
+      return $http(tokenReq).then(function(resp) {
+        if (resp.status !== 200) {
+          console.debug('ERROR: Email Service Failed...', resp);
+          return false;
+        } else {
+          return $http({
+            method: 'POST',
+            url: 'http://localhost:8080/sendemail',
+            head: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: {
+              from: 'howstaff@test.com',
+              to: 'derek.rusu@gmail.com',
+              subject: 'Test 456',
+              text: 'Sending from how app!',
+              token: resp.data.token
+            }
+          }).then(function(emailResp) {
+            if (emailResp.status !== 200) {
+              console.debug('ERROR: Email Service Failed...', emailResp);
+              return false;
+            } else {
+              return true;
+            };
+          });
+        }
+      });
+    }
 
     /******************************************************
      *            Other Utility methods - end             *
