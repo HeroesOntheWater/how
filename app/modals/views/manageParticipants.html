@@ -18,8 +18,8 @@
   <div class="col-sm-12" style="text-align: center;">
     <button ng-click="addParticipantToEvent()" class="btn btn-primary" ng-show="eventData.type === 'participants'" style="margin-bottom: 5px;">Edit Participants List</button>
     <button ng-click="addParticipantToEvent()" class="btn btn-primary" ng-show="eventData.type === 'volunteers'" style="margin-bottom: 5px;">Edit Volunteers List</button>
-    <button ng-click="" class="btn btn-primary" ng-disabled="true" ng-show="eventData.type === 'participants'" style="margin-bottom: 5px;">Notify Participants</button>
-    <button ng-click="" class="btn btn-primary" ng-disabled="true" ng-show="eventData.type === 'volunteers'" style="margin-bottom: 5px;">Notify Volunteers</button>
+    <button ng-click="emailParticipants()" class="btn btn-primary" ng-disabled="false" ng-show="eventData.type === 'participants'" style="margin-bottom: 5px;">Notify Participants</button>
+    <button ng-click="emailParticipants()" class="btn btn-primary" ng-disabled="false" ng-show="eventData.type === 'volunteers'" style="margin-bottom: 5px;">Notify Volunteers</button>
     <div style="margin-top: 5px; color:red;" ng-show="tableEmpty">
       <p ng-show="eventData.type === 'participants'">No Participants Listed for this Event, to Manually add participants click the "Edit Participants List" button at the top.</p>
       <p ng-show="eventData.type === 'volunteers'">No Volunteers Listed for this Event, to Manually add volunteers click the "Edit Volunteers List" button at the top.</p>
