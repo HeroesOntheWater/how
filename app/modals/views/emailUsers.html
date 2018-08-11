@@ -5,8 +5,78 @@
 </div>
 
 <!-- end modal-header -->
-<div class="modal-body">
-  <h2>Test!</h2>
+<div class="modal-body modal-scroll" ng-init="initialize()">
+  
+  <!-- Step 1 (Add Users)-->
+  <div ng-show="true" class="center_form">
+      <form name="search_form" class="form-horizontal" novalidate>
+
+        <!-- Search Type - Dropdown -->
+        <div class="form-group">
+            <label class="col-md-4 control-label">Search By</label>
+            <div class="col-md-7">
+              <select class="form-control" ng-change="clearSearch()" ng-options="type as type for type in searchTypes track by type" ng-model="searchType"></select>
+            </div>
+        </div>
+
+        <!-- Search by Name -->
+        <div class="form-group" ng-show="searchType == 'Name'">
+          <label class="col-md-4 control-label">First Name*</label>
+          <div class="col-md-7 " style="margin-bottom: 12px;">
+            <input type="text" id="search_first_name" name="search_first_name" class="form-control input-md" ng-required="true" ng-model="searchFirst" />
+            <span ng-show="!search_form.search_first_name.$valid && search_form.search_first_name.$touched" class="help-block">Valid First Name Required</span>
+          </div>
+          <label class="col-md-4 control-label">Last Name*</label>
+          <div class="col-md-7 ">
+            <input type="text" id="search_last_name" name="search_last_name" class="form-control input-md" ng-required="true" ng-model="searchLast" />
+            <span ng-show="!search_form.search_last_name.$valid && search_form.search_last_name.$touched" class="help-block">Valid Last Name Required</span>
+          </div>
+          <div class="col-md-12">
+            <button class="btn btn-primary additonal-chapter-btn-blue" ng-disabled="!(search_form.search_last_name.$valid && search_form.search_first_name.$valid)" ng-click="">Search</button>
+          </div>
+        </div>
+
+        <!-- Search by Email -->
+        <div class="form-group" ng-show="searchType == 'Email'">
+          <label class="col-md-4 control-label " for="search_email">Email</label>
+          <div class="col-md-7 " style="margin-bottom: 12px;">
+            <input type="email" id="search_email" name="search_email" class="form-control input-md" ng-required="true" ng-model="searchEmail" />
+            <span ng-show="!search_form.search_email.$valid && search_form.search_email.$touched" class="help-block">Valid Email Required</span>
+          </div>
+          <div class="col-md-12">
+            <button id="submit_search_email" name="submit_search_email" class="btn btn-primary additonal-chapter-btn-blue" ng-disabled="!(search_form.search_email.$valid)" ng-click="runSearch()">Search</button>
+          </div>
+        </div>
+
+        <!-- Available Email List, and Submit -->
+        <div class="form-group">
+          <div class="col-md-12">
+            <select multiple class="form-control" ng-model="selectAddEmails" ng-options="user as user.text for user in availableEmails"></select>
+            <button class="btn btn-primary additonal-chapter-btn-green" ng-disabled="!selectAddEmails" ng-click="addEmails()">Add Email</button>
+          </div>
+        </div>
+    
+        <!-- Selected Email List, and Submit -->
+        <div class="form-group">
+          <div class="col-md-12">
+            <select multiple class="form-control" ng-model="selectRemoveEmails" ng-options="user as user.text for user in selectedEmails"></select>
+            <button class="btn btn-primary additonal-chapter-btn-red" ng-disabled="!selectRemoveEmails" ng-click="removeEmails()">Remove Email</button>
+          </div>
+        </div>
+
+      </form>
+  </div>
+
+  <!-- Step 2 (Create Message)-->
+  <div ng-show="false">
+
+  </div>
+  
+  <!-- Step 3 (Finalize email)-->
+  <div ng-show="false">
+
+  </div>
+
 </div>
 
 <!-- end modal body -->

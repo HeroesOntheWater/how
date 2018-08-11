@@ -541,36 +541,33 @@ angular.module('ohanaApp').service('commonServices', [
     };
 
     // Get Email Token
-    this.emailService = function() {
-      var token = 'test';
-      var tokenReq = {method: 'GET', url: 'http://localhost:8080/token?token=' + token};
-      return $http(tokenReq).then(function(resp) {
-        if (resp.status !== 200) {
-          console.debug('ERROR: Email Service Failed...', resp);
-          return false;
-        } else {
-          return $http({
-            method: 'POST',
-            url: 'http://localhost:8080/sendemail',
-            head: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            data: {
-              from: 'howstaff@test.com',
-              to: 'derek.rusu@gmail.com',
-              subject: 'Test 456',
-              text: 'Sending from how app!',
-              token: resp.data.token
-            }
-          }).then(function(emailResp) {
-            if (emailResp.status !== 200) {
-              console.debug('ERROR: Email Service Failed...', emailResp);
-              return false;
-            } else {
-              return true;
-            };
-          });
-        }
+    this.emailService = function(username, password, data) {
+      return $http({
+          method: 'GET', 
+          url: 'http://localhost:8080/token?token='
+        }).then(function(resp) {
+          if (resp.status !== 200) {
+            console.debug('ERROR: Email Service Failed...', resp);
+            return false;
+          } else {
+            data.token = resp.data.token;
+            return $http({
+              method: 'POST',
+              url: 'http://localhost:8080/sendemail',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Basic ' + btoa(username + ':' + password)
+              },
+              data: JSON.stringify(data)
+            }).then(function(emailResp) {
+              if (emailResp.status !== 200) {
+                console.debug('ERROR: Email Service Failed...', emailResp);
+                return false;
+              } else {
+                return true;
+              };
+            });
+          }
       });
     }
 
