@@ -37,6 +37,11 @@ angular
         $scope.selectedEmails = [];
         $scope.selectAddEmails = false;
         $scope.selectRemoveEmails = false;
+        $scope.emailStepOne = true;
+        $scope.emailStepTwo = false;
+        $scope.emailStepThree = false;
+        $scope.subjectLine = '';
+        $scope.emailMessage = '';
 
         let userDataKeys = [];
         
@@ -99,6 +104,41 @@ angular
         
     }
 
+    $scope.checkValid = () => {
+        if (!_.isEmpty($scope.selectedEmails) && 
+            !_.isEmpty($scope.subjectLine) && 
+            !_.isEmpty($scope.emailMessage)) {
+            $scope.emailValid = true;
+        } else {
+            $scope.emailValid = false;
+        }
+    }
+
+    $scope.nextStep = () => {
+        if ($scope.emailStepOne) {
+            $scope.emailStepOne = false;
+            $scope.emailStepTwo = true;
+        } else if ($scope.emailStepTwo) {
+            $scope.emailStepTwo = false;
+            $scope.emailStepThree = true;
+            $scope.checkValid();
+        } else {
+            console.debug('Error: Invalid email step....');
+        }
+    }
+
+    $scope.backStep = () => {
+        if ($scope.emailStepTwo) {
+            $scope.emailStepTwo = false;
+            $scope.emailStepOne = true;
+        } else if ($scope.emailStepThree) {
+            $scope.emailStepThree = false;
+            $scope.emailStepTwo = true;
+        } else {
+            console.debug('Error: Invalid email step....');
+        }
+    }
+
     $scope.addEmails = () => {
         _.each($scope.selectAddEmails, (user) => {
             $scope.selectedEmails.push(user);
@@ -140,22 +180,30 @@ angular
             case 'All':
             default: break;
         }
+
     };
 
     $scope.sendEmail = () => {
-        let formData = {
+
+        let emailString = '';
+
+        _.each($scope.selectedEmails, (user) => {
+            emailString += user.email + ';';
+        });
+
+        var emailPromise = commonServices.emailService('derek', 'how1234', {
             from: 'howstaff@test.com',
-            to: 'derek.rusu@gmail.com',
-            subject: 'Test 550',
-            text: 'Sending from how app!'
-        }
-        var emailPromise = commonServices.emailService('derek', 'how1234', formData);
+            to: emailString,
+            subject: $scope.subjectLine,
+            text: $scope.emailMessage
+        });
+
         $q.all([emailPromise]).then((data) => {
             if (data[0]) {
-                // success here
+                console.debug(data[0]);
             };
         });
+        
     };
-
    
   });
