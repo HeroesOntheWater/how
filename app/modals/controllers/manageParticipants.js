@@ -58,11 +58,11 @@ angular
         backdrop: 'static',
         resolve: {
           emailData: function() {
-            return {mode: 'event', eventData: $scope.eventData};
+            return { mode: 'event', eventData: $scope.eventData };
           },
         },
       });
-    }
+    };
 
     // Sign wavier modal call.
     $scope.participantSignWaiver = function() {

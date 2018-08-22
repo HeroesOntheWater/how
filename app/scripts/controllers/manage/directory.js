@@ -700,7 +700,8 @@ angular
                         )
                         .data('key');
                       var modalInstance = $uibModal.open({
-                        templateUrl: '/modals/views/manageadditionalchapters.html',
+                        templateUrl:
+                          '/modals/views/manageadditionalchapters.html',
                         controller: 'ManageAdditionalChapters',
                         resolve: {
                           selectedUID: function() {
