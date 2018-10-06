@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<div class="modal-header">
+  <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+  <h4 class="modal-title">Notify Users</h4>
+</div>
+
+<!-- end modal-header -->
+<div class="modal-body modal-scroll" ng-init="initialize()">
+
+  <!-- Step 1 (Add Users)-->
+  <div ng-show="emailStepOne" class="center_form">
+    <form name="search_form" class="form-horizontal" novalidate>
+
+      <!-- Instructions -->
+      <div class="form-group">
+        <div class="col-md-12">
+          <p>Select users to notify</p>
+        </div>
+      </div>
+
+      <!-- Search Type - Dropdown -->
+      <div class="form-group">
+        <label class="col-md-4 control-label">Search By</label>
+        <div class="col-md-7">
+          <select class="form-control" ng-change="clearSearch()" ng-options="type as type for type in searchTypes track by type" ng-model="searchType"></select>
+        </div>
+      </div>
+
+      <!-- Search by Name -->
+      <div class="form-group" ng-show="searchType == 'Name'">
+        <label class="col-md-4 control-label">First Name*</label>
+        <div class="col-md-7 " style="margin-bottom: 12px;">
+          <input type="text" id="search_first_name" name="search_first_name" class="form-control input-md" ng-required="true" ng-model="searchFirst" />
+          <span ng-show="!search_form.search_first_name.$valid && search_form.search_first_name.$touched" class="help-block">Valid First Name Required</span>
+        </div>
+        <label class="col-md-4 control-label">Last Name*</label>
+        <div class="col-md-7 ">
+          <input type="text" id="search_last_name" name="search_last_name" class="form-control input-md" ng-required="true" ng-model="searchLast" />
+          <span ng-show="!search_form.search_last_name.$valid && search_form.search_last_name.$touched" class="help-block">Valid Last Name Required</span>
+        </div>
+        <div class="col-md-12">
+          <button class="btn btn-primary additonal-chapter-btn-blue" ng-disabled="!(search_form.search_last_name.$valid && search_form.search_first_name.$valid)" ng-click="">Search</button>
+        </div>
+      </div>
+
+      <!-- Search by Email -->
+      <div class="form-group" ng-show="searchType == 'Email'">
+        <label class="col-md-4 control-label " for="search_email">Email</label>
+        <div class="col-md-7 " style="margin-bottom: 12px;">
+          <input type="email" id="search_email" name="search_email" class="form-control input-md" ng-required="true" ng-model="searchEmail" />
+          <span ng-show="!search_form.search_email.$valid && search_form.search_email.$touched" class="help-block">Valid Email Required</span>
+        </div>
+        <div class="col-md-12">
+          <button id="submit_search_email" name="submit_search_email" class="btn btn-primary additonal-chapter-btn-blue" ng-disabled="!(search_form.search_email.$valid)" ng-click="runSearch()">Search</button>
+        </div>
+      </div>
+
+      <!-- Available Email List, and Submit -->
+      <div class="form-group">
+        <label class="col-md-4 control-label">Available Users</label>
+        <div class="col-md-12">
+          <select multiple style="overflow: auto;" class="form-control" ng-model="selectAddEmails" ng-options="user as user.text for user in availableEmails"></select>
+          <button class="btn btn-primary additonal-chapter-btn-green" ng-disabled="!selectAddEmails" ng-click="addEmails()">Add</button>
+        </div>
+      </div>
+
+      <!-- Selected Email List, and Submit -->
+      <div class="form-group">
+        <label class="col-md-4 control-label">Selected Users</label>
+        <div class="col-md-12">
+          <select multiple style="overflow: auto;" class="form-control" ng-model="selectRemoveEmails" ng-options="user as user.text for user in selectedEmails"></select>
+          <button class="btn btn-primary additonal-chapter-btn-red" ng-disabled="!selectRemoveEmails" ng-click="removeEmails()">Remove</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- Step 2 (Create Message)-->
+  <div ng-show="emailStepTwo" class="center_form">
+
+    <!-- Instructions -->
+    <div class="form-group">
+      <div class="col-md-12">
+        <p>Add a subject line, and message to send in the email notification.</p>
+      </div>
+    </div>
+
+    <!-- Add subject line -->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Subject*</label>
+      <div class="col-md-7" style="margin-bottom: 12px;">
+        <input type="text" class="form-control input-md" ng-model="subjectLine" />
+      </div>
+    </div>
+
+    <!-- Add message -->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Message*</label>
+      <div class="col-md-12">
+        <textarea style="resize: none;" class="form-control" rows="10" ng-model="emailMessage"></textarea>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Step 3 (Finalize email)-->
+  <div ng-show="emailStepThree" class="center_form">
+
+    <!-- Final selected emails -->
+    <div class="form-group">
+      <div class="col-md-12">
+        <p>{{selectedEmails[0]}}</p>
+      </div>
+    </div>
+
+    <!-- Final subject line -->
+    <div class="form-group">
+      <div class="col-md-12">
+        <p>{{subjectLine}}</p>
+      </div>
+    </div>
+
+    <!-- Final email -->
+    <div class="form-group">
+      <div class="col-md-12">
+        <p>{{emailMessage}}</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- end modal body -->
+<div class="modal-footer">
+  <div style="text-align: center;">
+    <button ng-show="emailStepThree" ng-disabled="!emailValid" type="button" name="submit" class="btn btn-success" ng-click="sendEmail()">Submit</button>
+    <button ng-show="(emailStepOne || emailStepTwo)" type="button" name="next" class="btn btn-primary" ng-click="nextStep()">Next</button>
+    <button ng-show="(emailStepTwo || emailStepThree)" type="button" name="back" class="btn btn-primary" ng-click="backStep()">Back</button>
+    <button type="button" name="cancel" class="btn btn-default" ng-click="cancel()">Cancel</button>
+  </div>
+</div>
