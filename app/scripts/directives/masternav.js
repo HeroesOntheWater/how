@@ -82,7 +82,7 @@ angular.module('ohanaApp').directive('masterNavigation', function() {
 
       $scope.rightnavloggedin = [
         {
-          state: '#/manage/dash',
+          state: '#/home',
           text: 'MANAGE',
         },
         {},
@@ -90,20 +90,8 @@ angular.module('ohanaApp').directive('masterNavigation', function() {
 
       $scope.participantNav = [
         {
-          state: '#/manage/chapterchat',
-          text: 'Chapter Chat',
-        },
-        // {
-        //     state: "#/manage/events",
-        //     text: "Events"
-        // },
-        {
           state: '#/publicEvents',
-          text: 'Events',
-        },
-        {
-          state: '#/expense/viewexpense',
-          text: 'Expense',
+          text: 'Public Events',
         },
         {
           state: '#/manage/profile',
@@ -116,57 +104,29 @@ angular.module('ohanaApp').directive('masterNavigation', function() {
           state: '#/manage/chapterchat',
           text: 'Chapter Chat',
         },
-        // {
-        //     state: "#/manage/events",
-        //     text: "Events"
-        // },
         {
           state: '#/publicEvents',
-          text: 'Events',
-        },
-        {
-          state: '#/expense/viewexpense',
-          text: 'Expense',
+          text: 'Public Events',
         },
         {
           state: '#/manage/profile',
           text: 'My Profile',
         },
-        // ,{
-        //     state: "#/manage/training",
-        //     text: "My Training"
-        // }
       ];
 
       $scope.ltmNav = [
-        // {
-        //     state: "#/dash/broadcasts",
-        //     text: "Broadcasts"
-        // },
-        // {
-        //   state: '#/manage/chadmin',
-        //   text: 'Chapter Administration',
-        // },
         {
           state: '#/manage/chapterchat',
           text: 'Chapter Chat',
         },
         {
           state: '#/publicEvents',
-          text: 'Events',
+          text: 'Public Events',
         },
         {
           state: '#/manage/events',
           text: 'Event Administration',
         },
-        {
-          state: '#/expense/viewexpense',
-          text: 'Expense',
-        },
-        // {
-        //     state: "#/inventory",
-        //     text: "Inventory"
-        // },
         {
           state: '#/manage/directory',
           text: 'Member Directory',
@@ -175,49 +135,21 @@ angular.module('ohanaApp').directive('masterNavigation', function() {
           state: '#/manage/profile',
           text: 'My Profile',
         },
-        // ,{
-        //     state: "#/manage/training",
-        //     text: "My Training"
-        // }
       ];
 
       $scope.nationalNav = [
-        // {
-        //     state: "#/superAdmin",
-        //     text: "Administration"
-        // },
-        // {
-        //     state: "#/dash/broadcasts",
-        //     text: "Broadcasts"
-        // },
         {
           state: '#/manage/chadmin',
           text: 'Chapter Administration',
         },
         {
-          state: '#/manage/chapterchat',
-          text: 'Chapter Chat',
-        },
-        // {
-        //     state: "donors",
-        //     text: "Donor Management"
-        // },
-        {
           state: '#/publicEvents',
-          text: 'Events',
+          text: 'Public Events',
         },
         {
           state: '#/manage/events',
           text: 'Event Administration',
         },
-        {
-          state: '#/expense/viewexpense',
-          text: 'Expense',
-        },
-        // {
-        //     state: "#/inventory",
-        //     text: "Inventory"
-        // },
         {
           state: '#/manage/directory',
           text: 'Member Directory',
@@ -226,11 +158,6 @@ angular.module('ohanaApp').directive('masterNavigation', function() {
           state: '#/manage/profile',
           text: 'My Profile',
         },
-        // ,
-        // {
-        //     state: "#/manage/training",
-        //     text: "My Training"
-        // }
       ];
 
       $scope.showDonate = function() {

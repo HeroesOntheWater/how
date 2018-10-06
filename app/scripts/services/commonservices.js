@@ -14,7 +14,16 @@ angular.module('ohanaApp').service('commonServices', [
   'expenseservice',
   '$firebaseArray',
   '$q',
-  function($rootScope, $firebaseAuth, DAO, expenseservice, $firebaseArray, $q) {
+  '$http',
+  function(
+    $rootScope,
+    $firebaseAuth,
+    DAO,
+    expenseservice,
+    $firebaseArray,
+    $q,
+    $http
+  ) {
     /******************************************************
      *           User Management - start                  *
      *******************************************************/
@@ -537,6 +546,41 @@ angular.module('ohanaApp').service('commonServices', [
           var errorMessage = error.message;
           console.log('ERROR: ' + error.code + ': ' + error.message);
         });
+    };
+
+    // Get Email Token
+    this.emailService = function(username, password, data) {
+      return $http({
+        method: 'GET',
+        url: 'https://how-email-service.herokuapp.com/token',
+      }).then(function(resp) {
+        if (resp.status !== 200) {
+          console.debug('ERROR: Email Service Failed...', resp);
+          return false;
+        } else {
+          data.token = resp.data.token;
+          return $http({
+            method: 'POST',
+            url: 'https://how-email-service.herokuapp.com/sendemail',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: 'Basic ' + btoa(username + ':' + password),
+            },
+            data: JSON.stringify(data),
+          }).then(function(emailResp) {
+            if (emailResp.status !== 200) {
+              console.debug('ERROR: Email service failed...', emailResp);
+              return { status: 'ERROR', code: emailResp.status };
+            } else {
+              console.debug(
+                'SUCCESS: Email notification sent successfully!',
+                emailResp
+              );
+              return { status: 'SUCCESS' };
+            }
+          });
+        }
+      });
     };
 
     /******************************************************

@@ -43,7 +43,7 @@ angular
       })
       .when('/whoweare', {
         templateUrl: 'views/whoweare.html',
-        //              controller: 'WhoweareCtrl as whoweare'
+        controller: 'WhoweareCtrl as whoweare',
       })
       .when('/getinvolved', {
         templateUrl: 'views/getinvolved.html',
@@ -57,18 +57,6 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl as login',
       })
-      .when('/manage/dash', {
-        templateUrl: 'views/manage/dash.html',
-        controller: 'DashCtrl as dash',
-      })
-      .when('/dash/upcoming-events', {
-        templateUrl: 'views/manage/dash.upcomingEvents.html',
-        controller: 'DashUpcomingEventsCtrl as dashUpcomingEvents',
-      })
-      .when('/dash/broadcasts', {
-        templateUrl: 'views/manage/dash.broadcasts.html',
-        controller: 'DashBroadcastsCtrl as dashBroadcasts',
-      })
       .when('/manage/events', {
         templateUrl: 'views/manage/events.html',
         controller: 'EventsCtrl as events',
@@ -77,45 +65,9 @@ angular
         templateUrl: 'views/publicevents.html',
         controller: 'PubliceventsCtrl as publicEvents',
       })
-      .when('/details/:id', {
-        templateUrl: 'views/manage/event.details.html',
-        controller: 'DetailsCtrl as eventDetail',
-      })
-      .when('/description', {
-        templateUrl: 'views/manage/event.details.description.html',
-        controller: 'EventdetaildescriptionCtrl as eventDescription',
-      })
-      .when('/volunteers', {
-        templateUrl: 'views/manage/event.details.volunteers.html',
-        controller: 'EventdetailvolunteersCtrl as eventVolunteers',
-      })
-      .when('/participants', {
-        templateUrl: 'views/manage/event.details.participants.html',
-        controller: 'EventdetailparticipantsCtrl as eventParticipants',
-      })
-      .when('/inventory', {
-        templateUrl: 'views/manage/event.details.equipment.html',
-        controller: 'InventoryCtrl as inventory',
-      })
-      .when('/notifications', {
-        templateUrl: 'views/manage/event.details.notifications.html',
-        controller: 'EventdetailnotificationCtrl as eventNotifications',
-      })
       .when('/manage/broadcasts', {
         templateUrl: 'views/manage/broadcasts.html',
         controller: 'BroadcastsCtrl as broadcasts',
-      })
-      .when('/manage/inventory', {
-        templateUrl: 'views/manage/inventory.html',
-        controller: 'InventoryCtrl as inventory',
-      })
-      .when('/manage/training', {
-        templateUrl: 'views/manage/training.html',
-        //              controller: 'TrainingCtrl as training'
-      })
-      .when('/manage/hours', {
-        templateUrl: 'views/manage/hours.html',
-        //              controller: 'HoursCtrl as hours'
       })
       .when('/manage/directory', {
         templateUrl: 'views/manage/directory.html',
@@ -129,56 +81,47 @@ angular
         templateUrl: 'views/manage/chadmin.html',
         controller: 'ChadminCtrl',
         controllerAs: 'manage/chadmin',
-        //              controller: 'ChadminCtrl as chadmin'
-      })
-      .when('/manage/regAdmin', {
-        templateUrl: 'views/manage/regadmin.html',
-        //              controller: 'RegadminCtrl as regadmin'
-      })
-      .when('/superAdmin', {
-        templateUrl: 'views/manage/superadmin.html',
-        //              controller: 'SuperadminCtrl as superadmin'
       })
       .when('/publicEvents', {
         templateUrl: 'views/public.events.html',
         controller: 'PublicEventsCtrl',
         controllerAs: 'public.events',
       })
-      .when('/expense/expensedetail/:BillId', {
-        templateUrl: 'views/expense/expensedetail.html',
-        controller: 'ExpenseDetailsCtrl',
-        controllerAs: 'expensedetail',
-      })
-      .when('/expense/newexpense', {
-        templateUrl: 'views/expense/newexpense.html',
-        controller: 'NewExpenseCtrl',
-        controllerAs: 'newexpense',
-      })
-      .when('/expense/viewexpense', {
-        templateUrl: 'views/expense/viewexpense.html',
-        controller: 'ViewExpenseController',
-        controllerAs: 'expense/viewexpense',
-      })
-      .when('/manage/chapterchat', {
-        templateUrl: 'views/manage/chapterchat.html',
-        controller: 'ManageChapterchatCtrl',
-        controllerAs: 'manage/chapterchat',
-      })
-      .when('/expense/CustomDateRange', {
-        templateUrl: 'views/expense/customdaterange.html',
-        controller: 'ExpenseCustomdaterangeCtrl',
-        controllerAs: 'expense/CustomDateRange',
-      })
-      .when('/expense/overview', {
-        templateUrl: 'views/expense/overview.html',
-        controller: 'ExpenseOverviewCtrl',
-        controllerAs: 'expense/overview',
-      })
-      .when('/expense/expenseconfig', {
-        templateUrl: 'views/expense/expenseconfig.html',
-        controller: 'ExpenseExpenseconfigCtrl',
-        controllerAs: 'expense/expenseconfig',
-      })
+      // .when('/expense/expensedetail/:BillId', {
+      //   templateUrl: 'views/expense/expensedetail.html',
+      //   controller: 'ExpenseDetailsCtrl',
+      //   controllerAs: 'expensedetail',
+      // })
+      // .when('/expense/newexpense', {
+      //   templateUrl: 'views/expense/newexpense.html',
+      //   controller: 'NewExpenseCtrl',
+      //   controllerAs: 'newexpense',
+      // })
+      // .when('/expense/viewexpense', {
+      //   templateUrl: 'views/expense/viewexpense.html',
+      //   controller: 'ViewExpenseController',
+      //   controllerAs: 'expense/viewexpense',
+      // })
+      // .when('/manage/chapterchat', {
+      //   templateUrl: 'views/manage/chapterchat.html',
+      //   controller: 'ManageChapterchatCtrl',
+      //   controllerAs: 'manage/chapterchat',
+      // })
+      // .when('/expense/CustomDateRange', {
+      //   templateUrl: 'views/expense/customdaterange.html',
+      //   controller: 'ExpenseCustomdaterangeCtrl',
+      //   controllerAs: 'expense/CustomDateRange',
+      // })
+      // .when('/expense/overview', {
+      //   templateUrl: 'views/expense/overview.html',
+      //   controller: 'ExpenseOverviewCtrl',
+      //   controllerAs: 'expense/overview',
+      // })
+      // .when('/expense/expenseconfig', {
+      //   templateUrl: 'views/expense/expenseconfig.html',
+      //   controller: 'ExpenseExpenseconfigCtrl',
+      //   controllerAs: 'expense/expenseconfig',
+      // })
       .otherwise({
         redirectTo: '/home',
       });

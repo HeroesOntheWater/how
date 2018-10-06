@@ -27,7 +27,6 @@ angular
     // Get most recent data on participants tied to this event.
     $scope.initialize = function() {
       $scope.tableEmpty = false;
-
       if ($scope.eventData.type === 'participants') {
         $scope.getCurrentParticipantsData($scope.eventData.event.participants);
       } else {
@@ -35,7 +34,7 @@ angular
       }
     };
 
-    // Opens edit participants modal
+    // Opens edit participants modal.
     $scope.addParticipantToEvent = function() {
       $uibModalInstance.dismiss('cancel');
       $uibModal.open({
@@ -50,7 +49,22 @@ angular
       });
     };
 
-    // Daniel Arroyo Add waiver module here :)
+    // Open email modal.
+    $scope.emailParticipants = function() {
+      $uibModalInstance.dismiss('cancel');
+      $uibModal.open({
+        templateUrl: '/modals/views/emailUsers.html',
+        controller: 'emailUsers',
+        backdrop: 'static',
+        resolve: {
+          emailData: function() {
+            return { mode: 'event', eventData: $scope.eventData };
+          },
+        },
+      });
+    };
+
+    // Sign wavier modal call.
     $scope.participantSignWaiver = function() {
       $uibModalInstance.dismiss('cancel');
       $uibModal.open({
@@ -65,7 +79,7 @@ angular
       });
     };
 
-    // Daniel Arroyo Add waiver module here :)
+    // Open sign waiver modal.
     $scope.participantSignMediaWaiver = function() {
       $uibModalInstance.dismiss('cancel');
       $uibModal.open({
@@ -80,6 +94,7 @@ angular
       });
     };
 
+    // Open roll call modal.
     $scope.rollCall = function() {
       $uibModalInstance.dismiss('cancel');
       $uibModal.open({
